@@ -1,0 +1,38 @@
+{
+  "name": "saas-better-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "start": "turbo start",
+    "lint": "turbo lint",
+    "format": "turbo format",
+    "check": "turbo check",
+    "fix": "turbo run fix",
+    "test": "turbo test",
+    "test:ui": "turbo test:ui",
+    "test:coverage": "turbo test:coverage",
+    "db:generate": "turbo db:generate",
+    "db:migrate": "turbo db:migrate",
+    "db:studio": "turbo db:studio",
+    "db:push": "turbo db:push",
+    "db:seed": "turbo db:seed",
+    "type-check": "turbo type-check",
+    "clean": "turbo clean && rm -rf node_modules/.cache",
+    "install:all": "pnpm install && pnpm run db:generate",
+    "deploy": "turbo build --filter=web && vercel --prod",
+    "preview": "turbo build --filter=web && vercel",
+    "admin": "tsx scripts/admin-cli.ts"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.6",
+    "tsx": "^4.20.4"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tooling/*"
+  ]
+}

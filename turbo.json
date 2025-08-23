@@ -1,0 +1,41 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "public/**", "*.config.js", "*.config.ts", "package.json"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "format": {
+      "dependsOn": ["^format"]
+    },
+    "check": {
+      "dependsOn": ["^check"]
+    },
+    "test": {
+      "dependsOn": ["^test"],
+      "inputs": ["src/**", "tests/**", "*.config.js", "*.config.ts"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "start": {
+      "dependsOn": ["build"],
+      "cache": false
+    },
+    "db:generate": {},
+    "db:migrate": {
+      "dependsOn": ["db:generate"]
+    },
+    "db:studio": {},
+    "type-check": {
+      "dependsOn": ["^build"]
+    }
+  },
+  "globalDependencies": ["package.json", "tsconfig.json"]
+}
