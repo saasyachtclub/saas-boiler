@@ -4,6 +4,7 @@ Thank you for your interest in contributing to SaaS Yacht Club! ⚓ We welcome c
 
 ## 📋 Table of Contents
 
+- [🔗 All Links & Resources](./LINKS.md) - **Complete directory of all project links**
 - [Code of Conduct](#-code-of-conduct)
 - [Getting Started](#-getting-started)
 - [Development Setup](#-development-setup)

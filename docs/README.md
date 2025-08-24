@@ -4,6 +4,8 @@ Welcome to the comprehensive documentation for **SaaS Yacht Club**! ⚓ This dir
 
 ## 📋 Table of Contents
 
+> **🔗 Quick Access**: [All Links & Resources](../LINKS.md) - Complete directory of all project links, resources, and external documentation
+
 ### 🚀 Getting Started
 - [Quick Start Guide](./getting-started/quick-start.md)
 - [Installation](./getting-started/installation.md)

@@ -405,6 +405,7 @@ Special thanks to the amazing open source community and these fantastic projects
 
 ### 🆘 Need Help?
 
+- **🔗 All Links & Resources**: [Complete directory of all project links](./LINKS.md) - **Start here!**
 - **📚 Documentation**: [Comprehensive guides](./docs/)
 - **❓ FAQ**: [Common questions](./docs/troubleshooting/faq.md)
 - **🐛 Issues**: [Report bugs](https://github.com/saasyachtclub/saas-boiler/issues)
@@ -420,5 +421,5 @@ Special thanks to the amazing open source community and these fantastic projects
 
   <br>
 
-  **[⭐ Star us on GitHub](https://github.com/saasyachtclub/saas-boiler) • [🚀 Join the Community](https://discord.gg/saasyachtclub) • [📚 Read the Docs](./docs/)**
+  **[⭐ Star us on GitHub](https://github.com/saasyachtclub/saas-boiler) • [🔗 All Links](./LINKS.md) • [🚀 Join the Community](https://discord.gg/saasyachtclub) • [📚 Read the Docs](./docs/)**
 </div>
