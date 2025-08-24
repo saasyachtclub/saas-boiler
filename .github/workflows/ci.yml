@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v4
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v4
@@ -86,7 +86,7 @@ jobs:
     needs: [lint, test]
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v4
@@ -127,7 +127,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v4
@@ -162,7 +162,7 @@ jobs:
     needs: [build]
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v4
@@ -205,7 +205,7 @@ jobs:
     needs: [lint, test, build]
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 🚀 Deploy to Vercel (Preview)
         uses: amondnet/vercel-action@v25
@@ -225,7 +225,7 @@ jobs:
     environment: production
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 🚀 Deploy to Vercel (Production)
         uses: amondnet/vercel-action@v25
@@ -250,7 +250,7 @@ jobs:
     needs: [deploy-production]
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 🔍 Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v11
