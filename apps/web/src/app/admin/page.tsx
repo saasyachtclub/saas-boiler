@@ -89,7 +89,7 @@ export default async function AdminDashboard() {
                   <div className="flex items-center space-x-2">
                     <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
                       <span className="text-sm font-medium">
-                        {user.name?.[0] || user.email[0].toUpperCase()}
+                        {user.name?.[0] || user.email?.[0]?.toUpperCase() || "U"}
                       </span>
                     </div>
                     <div>
