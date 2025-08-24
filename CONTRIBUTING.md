@@ -1,6 +1,6 @@
 # 🤝 Contributing to SaaS Yacht Club
 
-Thank you for your interest in contributing to SaaS Yacht Club! ⚓ We welcome contributions from developers of all skill levels. This FREE and open source project thrives on community contributions. This guide will help you get started.
+Thank you for your interest in contributing to SaaS Yacht Club! ⚓ We welcome contributions from developers of all skill levels. This **FREE and open source** project thrives on community contributions and is built with the latest technologies including **React 19**, **Next.js 15**, **TypeScript 5.7**, and modern development tools. This guide will help you get started.
 
 ## 📋 Table of Contents
 
@@ -36,14 +36,14 @@ Before you begin, ensure you have the following installed:
 2. **Clone** your fork locally:
 
 ```bash
-git clone https://github.com/yourusername/saas-yacht-club.git
-cd saas-yacht-club
+git clone https://github.com/yourusername/saas-boiler.git
+cd saas-boiler
 ```
 
 3. **Add upstream** remote:
 
 ```bash
-git remote add upstream https://github.com/saasyachtclub/saas-yacht-club.git
+git remote add upstream https://github.com/saasyachtclub/saas-boiler.git
 ```
 
 ## 🛠️ Development Setup

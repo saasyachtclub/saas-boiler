@@ -1,19 +1,38 @@
 # ⚓ SaaS Yacht Club - Modern Development Rules & Guidelines
 
 ## 🎯 Project Overview
-This is the ultimate FREE & Open Source SaaS boilerplate built with cutting-edge technologies: Next.js 15, React 19, Better Auth, Stripe, Neon PostgreSQL, and Drizzle ORM. It follows modern App Router patterns and includes everything needed to build and deploy production-ready SaaS applications.
+This is the ultimate **FREE & Open Source** SaaS boilerplate built with cutting-edge technologies: **Next.js 15**, **React 19**, **Better Auth**, **Stripe**, **Neon PostgreSQL**, and **Drizzle ORM**. It follows modern App Router patterns and includes everything needed to build and deploy production-ready SaaS applications.
 
-## 🏗️ Modern Architecture Stack
-- **Frontend**: Next.js 15 with App Router + React 19 + TypeScript 5.7
-- **Authentication**: Better Auth 1.3+ with social login & magic links
-- **Database**: Drizzle ORM + Neon PostgreSQL (serverless)
-- **Payments**: Stripe integration with subscription management
-- **Styling**: Tailwind CSS + shadcn/ui + Lucide React icons
-- **Code Quality**: Biome (ESLint + Prettier replacement)
-- **Testing**: Vitest + Playwright + React Testing Library
-- **Deployment**: Vercel with Edge Runtime
-- **Monitoring**: Sentry + PostHog + Axiom logging
-- **AI Integration**: Cursor IDE optimized development
+**Repository**: https://github.com/saasyachtclub/saas-boiler
+**Website**: https://saasyachtclub.com
+**License**: MIT (100% Free & Open Source)
+
+## 🏗️ Modern Architecture Stack (2024)
+
+### Core Technologies
+- **Frontend**: Next.js 15.4+ with App Router + React 19.1+ + TypeScript 5.7+
+- **Authentication**: Better Auth 1.1+ with social login, magic links & RBAC
+- **Database**: Drizzle ORM 0.38+ + Neon PostgreSQL (serverless, auto-scaling)
+- **Payments**: Stripe 17+ with subscriptions, webhooks & customer portal
+- **Styling**: Tailwind CSS 3.4+ + shadcn/ui + Lucide React icons
+- **Code Quality**: Biome 1.9+ (ESLint + Prettier replacement, 100x faster)
+- **Testing**: Vitest 3.0+ + Playwright 1.50+ + React Testing Library 16+
+- **Deployment**: Vercel with Edge Runtime + GitHub Actions CI/CD
+- **Monitoring**: Sentry 10.5+ + PostHog + Axiom logging + Upstash Redis
+- **Email**: Resend + React Email for transactional emails
+- **AI Integration**: Cursor IDE optimized development experience
+
+### Production Features
+- ✅ **Multi-tenant Architecture** with organizations & teams
+- ✅ **Role-based Access Control** (RBAC) with permissions
+- ✅ **Subscription Management** with Stripe integration
+- ✅ **Email System** with templates and automation
+- ✅ **Admin Dashboard** with user management
+- ✅ **Security Features** (CSRF, XSS, rate limiting, encryption)
+- ✅ **Performance Optimized** (caching, CDN, image optimization)
+- ✅ **SEO Ready** with metadata, sitemaps, and structured data
+- ✅ **Mobile & PWA** support with responsive design
+- ✅ **Internationalization** ready with i18n support
 
 ## 📁 File Structure & Glob Patterns
 
@@ -21,8 +40,24 @@ This is the ultimate FREE & Open Source SaaS boilerplate built with cutting-edge
 ```
 apps/web/src/
 ├── app/**/*.{tsx,ts}              # Next.js App Router pages & layouts
+│   ├── (marketing)/**             # Marketing pages (landing, pricing)
+│   ├── admin/**                   # Admin dashboard pages
+│   ├── auth/**                    # Authentication pages
+│   ├── dashboard/**               # User dashboard pages
+│   └── api/**                     # API routes (REST endpoints)
 ├── components/**/*.{tsx,ts}       # Reusable React components
+│   ├── ui/**                      # shadcn/ui base components
+│   ├── auth/**                    # Authentication components
+│   ├── dashboard/**               # Dashboard-specific components
+│   ├── admin/**                   # Admin panel components
+│   └── onboarding/**              # User onboarding flow
 ├── lib/**/*.{ts,tsx}             # Utility libraries & configurations
+│   ├── auth/**                    # Better Auth configuration
+│   ├── db/**                      # Database schema & utilities
+│   ├── stripe/**                  # Stripe integration
+│   ├── email/**                   # Email templates & sending
+│   ├── security/**                # Security utilities (CSRF, encryption)
+│   └── schemas/**                 # Zod validation schemas
 ├── hooks/**/*.{ts,tsx}           # Custom React hooks
 ├── types/**/*.ts                 # TypeScript type definitions
 ├── styles/**/*.{css,scss}        # Global styles & CSS modules
@@ -37,6 +72,11 @@ apps/web/src/
 **/package.json                   # Package manifests
 **/.env*                          # Environment files (gitignored)
 !**/.env.example                  # Environment templates (tracked)
+**/instrumentation*.ts            # Sentry instrumentation files
+**/.eslintrc*                     # ESLint configurations
+**/biome.json*                    # Biome configurations
+**/playwright.config.ts           # Playwright test configuration
+**/vitest.config.ts               # Vitest test configuration
 ```
 
 ### Build & Generated Files (Excluded)
@@ -50,86 +90,133 @@ apps/web/src/
 **/*.log                         # Log files
 **/.DS_Store                     # macOS system files
 **/Thumbs.db                     # Windows system files
+**/.vercel/**                    # Vercel deployment cache
+**/playwright-report/**          # Playwright test reports
+**/test-results/**               # Test result artifacts
 ```
 
 ## 🎨 Code Style Guidelines
 
-### TypeScript Best Practices
-- Use strict TypeScript configuration with `"strict": true`
-- Define proper interfaces for all data structures
-- Use generics for reusable components and functions
-- Implement proper error types with custom error classes
+### TypeScript Best Practices (React 19 + Next.js 15)
+- Use **strict TypeScript** configuration with `"strict": true` and `"exactOptionalPropertyTypes": false`
+- Define proper interfaces for all data structures and API responses
+- Use **generics** for reusable components and functions
+- Implement proper **error types** with custom error classes
 - Export types from dedicated type files in `types/` directory
 - Use `interface` over `type` for object definitions
-- Implement proper null/undefined handling with optional chaining
+- Implement proper **null/undefined handling** with optional chaining (`?.`)
+- Use **non-null assertions** (`!`) only when absolutely certain
+- Add **TypeScript declarations** for CSS modules and external libraries
 
-### React Components (Modern Patterns)
-- Use Server Components by default (no 'use client' unless needed)
+### React 19 Components (Modern Patterns)
+- Use **Server Components** by default (no 'use client' unless needed)
+- Implement **React 19 features**: improved hydration, concurrent features
+- Use **Suspense boundaries** for data fetching and loading states
 - Implement proper TypeScript interfaces for all props
-- Use custom hooks for shared logic and state management
-- Follow component composition patterns over inheritance
-- Implement proper loading and error states for all async operations
-- Use React.Suspense for data fetching boundaries
-- Implement proper accessibility with ARIA attributes
+- Use **custom hooks** for shared logic and state management
+- Follow **component composition** patterns over inheritance
+- Implement proper **loading and error states** for all async operations
+- Use **React.Suspense** for data fetching boundaries
+- Implement proper **accessibility** with ARIA attributes
+- Use **forwardRef** for component refs and proper TypeScript typing
+
+### Next.js 15 App Router Patterns
+- Use **App Router** exclusively (no Pages Router)
+- Implement **Server Actions** for form submissions and mutations
+- Use **Route Handlers** for API endpoints with proper HTTP methods
+- Implement **Middleware** for authentication and request processing
+- Use **Dynamic Routes** with proper TypeScript typing
+- Implement **Parallel Routes** and **Intercepting Routes** where appropriate
+- Use **Loading UI** and **Error UI** for better user experience
+- Implement **Not Found** pages for better 404 handling
+- Use **Metadata API** for SEO optimization
+- Implement **Static Generation** where possible for performance
 
 ### Database Operations (Drizzle ORM)
 - Define all schemas in dedicated files under `lib/db/schema/`
-- Use relations for complex queries and joins
-- Implement proper error handling with try-catch blocks
-- Use database transactions for complex operations
-- Implement proper connection pooling and cleanup
-- Use prepared statements for repeated queries
-- Add proper indexes for performance optimization
+- Use **relations** for complex queries and joins
+- Implement proper **error handling** with try-catch blocks
+- Use **database transactions** for complex operations
+- Implement proper **connection pooling** and cleanup
+- Use **prepared statements** for repeated queries
+- Add proper **indexes** for performance optimization
+- Use **Drizzle migrations** for schema changes
+- Implement **soft deletes** for important data
+- Use **proper typing** with Drizzle's TypeScript integration
 
-## 🔐 Authentication & Security
+## 🔐 Authentication & Security (Better Auth)
 
 ### Better Auth Configuration
-- Enable email verification for all new accounts
-- Implement proper password policies (min 8 chars, complexity)
-- Use secure session management with proper expiration
-- Enable rate limiting on authentication endpoints
-- Implement proper CSRF protection
-- Use secure cookie settings in production
-- Add proper logout functionality with session cleanup
+- Enable **email verification** for all new accounts
+- Implement proper **password policies** (min 8 chars, complexity)
+- Use **secure session management** with proper expiration
+- Enable **rate limiting** on authentication endpoints
+- Implement proper **CSRF protection** with tokens
+- Use **secure cookie settings** in production (httpOnly, secure, sameSite)
+- Add proper **logout functionality** with session cleanup
+- Implement **social login** (Google, GitHub, etc.)
+- Use **magic links** for passwordless authentication
+- Add **two-factor authentication** (2FA) support
 
 ### Route Protection Patterns
-- Protect routes at the server level using middleware
-- Implement role-based access control (RBAC)
-- Use proper redirect patterns for unauthorized access
-- Add loading states during authentication checks
-- Implement proper error handling for auth failures
-- Use session validation on all protected API routes
+- Protect routes at the **server level** using middleware
+- Implement **role-based access control** (RBAC) with permissions
+- Use proper **redirect patterns** for unauthorized access
+- Add **loading states** during authentication checks
+- Implement proper **error handling** for auth failures
+- Use **session validation** on all protected API routes
+- Implement **organization-based access control**
+- Add **audit logging** for sensitive operations
+- Use **proper TypeScript types** for user sessions and roles
 
 ## 💳 Stripe Integration Patterns
 
 ### Subscription Management
-- Use Stripe Customer Portal for self-service management
-- Implement proper webhook handling for subscription events
-- Add proper error handling for payment failures
-- Use idempotency keys for payment operations
-- Implement proper subscription status tracking
-- Add proper invoice and payment history
-- Use Stripe Test Clock for testing subscription scenarios
+- Use **Stripe Customer Portal** for self-service management
+- Implement proper **webhook handling** for subscription events
+- Add proper **error handling** for payment failures
+- Use **idempotency keys** for payment operations
+- Implement proper **subscription status tracking**
+- Add proper **invoice and payment history**
+- Use **Stripe Test Clock** for testing subscription scenarios
+- Implement **proration handling** for plan changes
+- Add **dunning management** for failed payments
+- Use **Stripe Elements** for secure payment forms
+
+### Payment Security
+- Never store **payment information** on your servers
+- Use **Stripe's secure tokenization** for all payments
+- Implement proper **webhook signature verification**
+- Add **proper logging** for all payment events
+- Use **environment-specific** Stripe keys
+- Implement **proper error handling** for payment flows
+- Add **fraud detection** and prevention measures
 
 ## 🎨 Styling & UI Guidelines
 
 ### Tailwind CSS Best Practices
-- Use CSS custom properties for theming
-- Implement proper dark mode support with CSS variables
-- Use consistent spacing scale (4px base unit)
-- Implement responsive design with mobile-first approach
-- Use semantic color names (primary, secondary, accent)
-- Avoid arbitrary values, use design tokens
-- Implement proper focus states for accessibility
+- Use **CSS custom properties** for theming and dark mode
+- Implement proper **dark mode support** with CSS variables
+- Use **consistent spacing scale** (4px base unit: space-1, space-2, etc.)
+- Implement **responsive design** with mobile-first approach
+- Use **semantic color names** (primary, secondary, accent, destructive)
+- Avoid **arbitrary values**, use design tokens from theme
+- Implement proper **focus states** for accessibility
+- Use **Tailwind's built-in animations** and transitions
+- Implement **proper contrast ratios** for accessibility
+- Use **consistent typography scale** with proper line heights
 
-### Component Patterns
-- Use shadcn/ui as the base component library
-- Implement proper component variants with class-variance-authority
-- Use compound components for complex UI patterns
-- Implement proper loading and error states
-- Add proper animations with Tailwind CSS animate
-- Use proper semantic HTML elements
-- Implement proper form validation with visual feedback
+### shadcn/ui Component Patterns
+- Use **shadcn/ui** as the base component library
+- Implement proper **component variants** with class-variance-authority
+- Use **compound components** for complex UI patterns
+- Implement proper **loading and error states** for all components
+- Add proper **animations** with Tailwind CSS animate
+- Use proper **semantic HTML elements** for accessibility
+- Implement proper **form validation** with visual feedback
+- Use **Radix UI primitives** for complex interactions
+- Implement **proper keyboard navigation** for all interactive elements
+- Add **proper ARIA labels** and descriptions
 
 ## 🧪 Testing Strategies
 
@@ -139,155 +226,236 @@ apps/web/src/
 **/*.{test,spec}.{ts,tsx}                 # Co-located tests
 **/e2e/**/*.{test,spec}.ts                # E2E tests
 **/playwright/**/*.{test,spec}.ts         # Playwright tests
+**/vitest/**/*.{test,spec}.ts             # Vitest unit tests
 ```
 
 ### Testing Best Practices
-- Write tests for all critical business logic
-- Use React Testing Library for component tests
-- Implement proper test setup and teardown
-- Use MSW (Mock Service Worker) for API mocking
-- Add visual regression tests for UI components
-- Test error states and edge cases
-- Use proper test data factories for consistent test data
+- Write **tests for all critical business logic**
+- Use **React Testing Library** for component tests
+- Implement proper **test setup and teardown**
+- Use **MSW (Mock Service Worker)** for API mocking
+- Add **visual regression tests** for UI components
+- Test **error states and edge cases**
+- Use proper **test data factories** for consistent test data
+- Implement **integration tests** for critical user flows
+- Add **accessibility tests** with jest-axe
+- Use **Playwright** for end-to-end testing
+
+### Test Organization
+- Group tests by **feature or component**
+- Use **descriptive test names** that explain the behavior
+- Implement **proper test isolation** and cleanup
+- Use **test utilities** for common setup and assertions
+- Add **performance tests** for critical operations
+- Implement **database testing** with proper cleanup
+- Use **proper mocking strategies** for external dependencies
 
 ## 🚀 Performance Optimization
 
 ### Code Splitting & Lazy Loading
-- Use dynamic imports for heavy components
-- Implement proper loading states for lazy components
-- Use React.lazy() for client-side code splitting
-- Implement proper bundle analysis and monitoring
-- Use proper image optimization with Next.js Image
-- Implement proper caching strategies
-- Use proper CDN configuration for static assets
+- Use **dynamic imports** for heavy components
+- Implement proper **loading states** for lazy components
+- Use **React.lazy()** for client-side code splitting
+- Implement proper **bundle analysis** and monitoring
+- Use **Next.js Image** component for image optimization
+- Implement proper **caching strategies** (Redis, CDN)
+- Use **proper CDN configuration** for static assets
+- Implement **preloading** for critical resources
+- Use **service workers** for offline functionality
+- Add **performance monitoring** with Core Web Vitals
 
 ### Database Performance
-- Use proper database indexes for query optimization
-- Implement connection pooling for database connections
-- Use proper query optimization techniques
-- Implement proper caching for frequently accessed data
-- Use database migrations for schema changes
-- Monitor database performance and slow queries
-- Implement proper database backup and recovery
+- Use proper **database indexes** for query optimization
+- Implement **connection pooling** for database connections
+- Use proper **query optimization** techniques
+- Implement proper **caching** for frequently accessed data
+- Use **database migrations** for schema changes
+- Monitor **database performance** and slow queries
+- Implement proper **database backup** and recovery
+- Use **read replicas** for scaling read operations
+- Implement **query result caching** with Redis
+- Add **database monitoring** and alerting
 
 ## 🔒 Security Best Practices
 
-### Input Validation
-- Use Zod for all input validation and sanitization
-- Implement proper CORS configuration
-- Use Content Security Policy (CSP) headers
-- Implement proper rate limiting on all API endpoints
-- Use HTTPS in production with proper SSL configuration
-- Implement proper session management and security
-- Add proper logging and monitoring for security events
+### Input Validation & Sanitization
+- Use **Zod** for all input validation and sanitization
+- Implement proper **CORS configuration** for API endpoints
+- Use **Content Security Policy (CSP)** headers
+- Implement proper **rate limiting** on all API endpoints
+- Use **HTTPS** in production with proper SSL configuration
+- Implement proper **session management** and security
+- Add proper **logging and monitoring** for security events
+- Use **input sanitization** to prevent XSS attacks
+- Implement **SQL injection prevention** with parameterized queries
+- Add **proper authentication** for all sensitive operations
 
-### Data Protection
-- Never store sensitive data in localStorage or sessionStorage
-- Use proper encryption for sensitive data at rest
-- Implement proper data retention and deletion policies
-- Use environment variables for all secrets and API keys
-- Implement proper access controls and permissions
-- Add proper audit logging for sensitive operations
-- Use proper backup encryption and security
+### Data Protection & Privacy
+- Never store **sensitive data** in localStorage or sessionStorage
+- Use proper **encryption** for sensitive data at rest
+- Implement proper **data retention** and deletion policies
+- Use **environment variables** for all secrets and API keys
+- Implement proper **access controls** and permissions
+- Add proper **audit logging** for sensitive operations
+- Use proper **backup encryption** and security
+- Implement **GDPR compliance** features (data export, deletion)
+- Add **privacy controls** for user data
+- Use **secure communication** (TLS) for all data transmission
 
 ## 🌐 API Design Patterns
 
 ### RESTful API Structure
-- Follow RESTful conventions for all API endpoints
-- Use proper HTTP status codes for all responses
-- Implement proper error handling with consistent error format
-- Use proper request/response validation with Zod
-- Implement proper pagination for list endpoints
-- Add proper API documentation with OpenAPI/Swagger
-- Use proper versioning strategy for API changes
+- Follow **RESTful conventions** for all API endpoints
+- Use proper **HTTP status codes** for all responses
+- Implement proper **error handling** with consistent error format
+- Use proper **request/response validation** with Zod
+- Implement proper **pagination** for list endpoints
+- Add proper **API documentation** with OpenAPI/Swagger
+- Use proper **versioning strategy** for API changes
+- Implement **proper authentication** for all endpoints
+- Add **rate limiting** and **request throttling**
+- Use **proper HTTP methods** (GET, POST, PUT, DELETE, PATCH)
 
-### Error Handling
-- Implement consistent error response format
-- Use proper HTTP status codes for different error types
-- Add proper error logging and monitoring
-- Implement proper error boundaries in React components
-- Use proper error messages that are user-friendly
-- Add proper retry logic for transient errors
-- Implement proper circuit breaker patterns for external APIs
+### Error Handling & Logging
+- Implement **consistent error response format**
+- Use proper **HTTP status codes** for different error types
+- Add proper **error logging** and monitoring with Sentry
+- Implement proper **error boundaries** in React components
+- Use proper **error messages** that are user-friendly
+- Add proper **retry logic** for transient errors
+- Implement proper **circuit breaker patterns** for external APIs
+- Add **structured logging** with proper context
+- Use **error tracking** and alerting for critical issues
+- Implement **graceful degradation** for service failures
 
 ## 📊 Monitoring & Analytics
 
-### Error Tracking
-- Use Sentry for error tracking and performance monitoring
-- Implement proper error boundaries and error handling
-- Add proper logging for all critical operations
-- Use proper alerting for critical errors and issues
-- Implement proper performance monitoring and optimization
-- Add proper user session recording for debugging
-- Use proper A/B testing for feature rollouts
+### Error Tracking & Performance
+- Use **Sentry** for error tracking and performance monitoring
+- Implement proper **error boundaries** and error handling
+- Add proper **logging** for all critical operations with Axiom
+- Use proper **alerting** for critical errors and issues
+- Implement proper **performance monitoring** and optimization
+- Add proper **user session recording** for debugging
+- Use proper **A/B testing** for feature rollouts
+- Monitor **Core Web Vitals** and user experience metrics
+- Add **custom dashboards** for business metrics
+- Implement **real-time monitoring** and alerting
 
 ### Analytics Integration
-- Use PostHog for product analytics and user behavior tracking
-- Implement proper event tracking for user actions
-- Add proper conversion funnel tracking
-- Use proper cohort analysis for user retention
-- Implement proper feature flag management
-- Add proper custom dashboards for business metrics
-- Use proper data export and analysis capabilities
+- Use **PostHog** for product analytics and user behavior tracking
+- Implement proper **event tracking** for user actions
+- Add proper **conversion funnel tracking**
+- Use proper **cohort analysis** for user retention
+- Implement proper **feature flag management**
+- Add proper **custom dashboards** for business metrics
+- Use proper **data export** and analysis capabilities
+- Implement **privacy-compliant** analytics
+- Add **user journey tracking** and optimization
+- Use **predictive analytics** for business insights
 
 ## 🔄 CI/CD Pipeline Patterns
 
 ### GitHub Actions Workflows
-- Implement proper automated testing in CI pipeline
-- Use proper caching for dependencies and build artifacts
-- Implement proper security scanning and vulnerability checks
-- Add proper code quality checks and linting
-- Use proper deployment strategies with rollback capabilities
-- Implement proper environment-specific deployments
-- Add proper monitoring and alerting for deployment failures
+- Implement proper **automated testing** in CI pipeline
+- Use proper **caching** for dependencies and build artifacts
+- Implement proper **security scanning** and vulnerability checks
+- Add proper **code quality checks** and linting with Biome
+- Use proper **deployment strategies** with rollback capabilities
+- Implement proper **environment-specific deployments**
+- Add proper **monitoring and alerting** for deployment failures
+- Use **parallel job execution** for faster builds
+- Implement **proper secrets management**
+- Add **deployment notifications** and status updates
 
 ### Deployment Best Practices
-- Use proper environment variable management
-- Implement proper database migration strategies
-- Use proper blue-green deployment for zero downtime
-- Add proper health checks and monitoring
-- Implement proper backup and recovery procedures
-- Use proper SSL/TLS configuration and security headers
-- Add proper CDN configuration for global performance
+- Use proper **environment variable management**
+- Implement proper **database migration strategies**
+- Use proper **blue-green deployment** for zero downtime
+- Add proper **health checks** and monitoring
+- Implement proper **backup and recovery** procedures
+- Use proper **SSL/TLS configuration** and security headers
+- Add proper **CDN configuration** for global performance
+- Implement **proper rollback procedures**
+- Use **infrastructure as code** for reproducible deployments
+- Add **deployment verification** and smoke tests
 
 ## 📝 Documentation Standards
 
 ### Code Documentation
-- Add proper JSDoc comments for all public functions and classes
-- Document all API endpoints with proper examples
-- Add proper README files for all major components
-- Use proper inline comments for complex business logic
-- Implement proper architecture documentation
-- Add proper troubleshooting guides and FAQs
-- Use proper changelog management for version tracking
+- Add proper **JSDoc comments** for all public functions and classes
+- Document all **API endpoints** with proper examples
+- Add proper **README files** for all major components
+- Use proper **inline comments** for complex business logic
+- Implement proper **architecture documentation**
+- Add proper **troubleshooting guides** and FAQs
+- Use proper **changelog management** for version tracking
+- Document **deployment procedures** and requirements
+- Add **security documentation** and best practices
+- Create **developer onboarding guides**
 
 ### Component Documentation
-- Document all component props and their types
-- Add proper usage examples for all components
-- Document all component variants and states
-- Add proper accessibility documentation
-- Use proper Storybook for component documentation
-- Add proper design system documentation
-- Document all custom hooks and their usage
+- Document all **component props** and their types
+- Add proper **usage examples** for all components
+- Document all **component variants** and states
+- Add proper **accessibility documentation**
+- Use proper **Storybook** for component documentation
+- Add proper **design system documentation**
+- Document all **custom hooks** and their usage
+- Add **testing documentation** and examples
+- Create **style guide** documentation
+- Document **performance considerations**
 
 ## 🎯 File Naming Conventions
 
 ### Component Files
-- Use PascalCase for React component files (UserProfile.tsx)
-- Use lowercase for utility and configuration files (utils.ts)
-- Use kebab-case for page files in app router (user-profile/page.tsx)
-- Use proper file extensions (.tsx for React, .ts for utilities)
-- Group related files in feature-based directories
-- Use index files for clean imports and exports
-- Add proper file organization with barrel exports
+- Use **PascalCase** for React component files (UserProfile.tsx)
+- Use **lowercase** for utility and configuration files (utils.ts)
+- Use **kebab-case** for page files in app router (user-profile/page.tsx)
+- Use proper **file extensions** (.tsx for React, .ts for utilities)
+- Group **related files** in feature-based directories
+- Use **index files** for clean imports and exports
+- Add proper **file organization** with barrel exports
+- Use **descriptive names** that explain the file's purpose
+- Implement **consistent naming** across all files
+- Add **proper file headers** with descriptions
 
 ### Directory Structure
-- Use feature-based directory structure for scalability
-- Group related components, hooks, and utilities together
-- Use proper separation of concerns between layers
-- Implement proper module boundaries and dependencies
-- Use consistent naming across all directories
-- Add proper README files for complex directory structures
-- Use proper import/export patterns for clean architecture
+- Use **feature-based directory structure** for scalability
+- Group **related components, hooks, and utilities** together
+- Use proper **separation of concerns** between layers
+- Implement proper **module boundaries** and dependencies
+- Use **consistent naming** across all directories
+- Add proper **README files** for complex directory structures
+- Use proper **import/export patterns** for clean architecture
+- Implement **proper dependency management**
+- Add **architectural decision records** (ADRs)
+- Create **module documentation** for complex features
 
-This comprehensive rule set ensures modern, scalable, and maintainable SaaS development with the latest best practices and tools.
+## 🚀 Modern Development Workflow
+
+### Development Environment
+- Use **Node.js 20+** and **pnpm 9+** for package management
+- Use **Cursor IDE** with AI-powered development
+- Implement **proper Git workflow** with feature branches
+- Use **conventional commits** for clear commit messages
+- Add **pre-commit hooks** for code quality
+- Use **proper environment management** with .env files
+- Implement **hot reloading** for fast development
+- Add **proper debugging** setup with source maps
+- Use **proper linting** and formatting with Biome
+- Implement **proper TypeScript** configuration
+
+### Code Quality & Standards
+- Use **Biome** for linting and formatting (100x faster than ESLint)
+- Implement **proper TypeScript** strict mode
+- Add **proper testing** with high coverage
+- Use **proper code reviews** and pull request templates
+- Implement **proper security scanning**
+- Add **proper dependency management** and updates
+- Use **proper documentation** standards
+- Implement **proper error handling** patterns
+- Add **proper logging** and monitoring
+- Use **proper performance optimization** techniques
+
+This comprehensive rule set ensures modern, scalable, and maintainable SaaS development with the latest React 19, Next.js 15, and industry best practices for 2024.

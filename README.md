@@ -1,20 +1,20 @@
 # ⚓ SaaS Yacht Club - The Ultimate FREE & Open Source SaaS Boilerplate
 
-[![Next.js](https://img.shields.io/badge/Next.js-15.0-black)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.0-blue)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
-[![Better Auth](https://img.shields.io/badge/Better%20Auth-1.3-green)](https://better-auth.com/)
-[![Stripe](https://img.shields.io/badge/Stripe-Payments-purple)](https://stripe.com/)
-[![Neon](https://img.shields.io/badge/Neon-Database-green)](https://neon.tech/)
-[![Drizzle ORM](https://img.shields.io/badge/Drizzle-ORM-orange)](https://orm.drizzle.team/)
-[![Biome](https://img.shields.io/badge/Biome-1.9-green)](https://biomejs.dev/)
-[![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-Components-black)](https://ui.shadcn.com/)
-[![Turbo](https://img.shields.io/badge/Turbo-Monorepo-blue)](https://turbo.build/)
+[![Next.js](https://img.shields.io/badge/Next.js-15.4-black?logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.1-blue?logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Better Auth](https://img.shields.io/badge/Better%20Auth-1.1-green?logo=auth0)](https://better-auth.com/)
+[![Stripe](https://img.shields.io/badge/Stripe-17.6-purple?logo=stripe)](https://stripe.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
+[![Drizzle ORM](https://img.shields.io/badge/Drizzle-0.38-green?logo=drizzle)](https://orm.drizzle.team/)
+[![Biome](https://img.shields.io/badge/Biome-1.9-green?logo=biome)](https://biomejs.dev/)
+[![Vitest](https://img.shields.io/badge/Vitest-3.0-yellow?logo=vitest)](https://vitest.dev/)
+[![Playwright](https://img.shields.io/badge/Playwright-1.50-green?logo=playwright)](https://playwright.dev/)
 
 <div align="center">
-  <img src="https://img.shields.io/github/stars/saasyachtclub/saas-yacht-club?style=social" alt="GitHub Stars" />
-  <img src="https://img.shields.io/github/forks/saasyachtclub/saas-yacht-club?style=social" alt="GitHub Forks" />
-  <img src="https://img.shields.io/github/issues/saasyachtclub/saas-yacht-club" alt="GitHub Issues" />
+  <img src="https://img.shields.io/github/stars/saasyachtclub/saas-boiler?style=social" alt="GitHub Stars" />
+  <img src="https://img.shields.io/github/forks/saasyachtclub/saas-boiler?style=social" alt="GitHub Forks" />
+  <img src="https://img.shields.io/github/issues/saasyachtclub/saas-boiler" alt="GitHub Issues" />
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="License" />
   <img src="https://img.shields.io/badge/FREE-Open%20Source-green" alt="Free & Open Source" />
   <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen" alt="PRs Welcome" />

@@ -1,6 +1,6 @@
-# 📚 SaaS Better Documentation
+# 📚 SaaS Yacht Club Documentation
 
-Welcome to the comprehensive documentation for SaaS Better! This directory contains detailed guides, tutorials, and reference materials to help you get the most out of the boilerplate.
+Welcome to the comprehensive documentation for **SaaS Yacht Club**! ⚓ This directory contains detailed guides, tutorials, and reference materials to help you get the most out of our **FREE & Open Source** SaaS boilerplate built with **React 19**, **Next.js 15**, and modern technologies.
 
 ## 📋 Table of Contents
 
@@ -182,4 +182,4 @@ If you can't find what you're looking for in the documentation:
 
 ---
 
-**Happy building with SaaS Better! 🚀**
+**Happy building with SaaS Yacht Club! 🚀⚓**
