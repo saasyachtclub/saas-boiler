@@ -105,8 +105,8 @@ importers:
         specifier: ^4.1.2
         version: 4.8.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       sonner:
-        specifier: ^1.7.1
-        version: 1.7.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: ^2.0.7
+        version: 2.0.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       stripe:
         specifier: ^17.6.0
         version: 17.7.0
@@ -3085,6 +3085,11 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
+  browserslist@4.25.3:
+    resolution: {integrity: sha512-cDGv1kkDI4/0e5yON9yM5G/0A5u8sf5TnmdX5C9qHzI9PPu++sQ9zjm1k9NiOrf3riY4OkK0zSGqfvJyJsgCBQ==}
+    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
+    hasBin: true
+
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
 
@@ -3121,6 +3126,9 @@ packages:
 
   caniuse-lite@1.0.30001735:
     resolution: {integrity: sha512-EV/laoX7Wq2J9TQlyIXRxTJqIw4sxfXS4OYgudGxBYRuTv0q7AM6yMEpU/Vo1I94thg9U6EZ2NfZx9GJq83u7w==}
+
+  caniuse-lite@1.0.30001737:
+    resolution: {integrity: sha512-BiloLiXtQNrY5UyF0+1nSJLXUENuhka2pzy2Fx5pGxqavdrxSCW4U6Pn/PoG3Efspi2frRbHpBV2XsrPE6EDlw==}
 
   chai@5.3.3:
     resolution: {integrity: sha512-4zNhdJD/iOjSH0A05ea+Ke6MU5mmpQcbQsSOkgdaUMJ9zTlDTD/GYlwohmIE2u0gaxHYiVHEn1Fw9mZ/ktJWgw==}
@@ -3470,6 +3478,9 @@ packages:
 
   electron-to-chromium@1.5.203:
     resolution: {integrity: sha512-uz4i0vLhfm6dLZWbz/iH88KNDV+ivj5+2SA+utpgjKaj9Q0iDLuwk6Idhe9BTxciHudyx6IvTvijhkPvFGUQ0g==}
+
+  electron-to-chromium@1.5.208:
+    resolution: {integrity: sha512-ozZyibehoe7tOhNaf16lKmljVf+3npZcJIEbJRVftVsmAg5TeA1mGS9dVCZzOwr2xT7xK15V0p7+GZqSPgkuPg==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -4977,8 +4988,8 @@ packages:
     resolution: {integrity: sha512-oZ7iUCxph8WYRHHcjBEc9unw3adt5CmSNlppj/5Q4k2RIrhl8Z5yY2Xr4j9zj0+wzVZ0bxmYoGSzKJnRl6A4yg==}
     engines: {node: '>=10.2.0'}
 
-  sonner@1.7.4:
-    resolution: {integrity: sha512-DIS8z4PfJRbIyfVFDVnK9rO3eYDtse4Omcm6bt0oEr5/jtLgysmjuBl1frJ9E/EQZrFmKx2A8m/s5s9CRXIzhw==}
+  sonner@2.0.7:
+    resolution: {integrity: sha512-W6ZN4p58k8aDKA4XPcx2hpIQXBRAgyiWVkYhT7CvK6D3iAu7xjvVyhQHg2/iaKJZ1XVJ4r7XuwGL+WGEK37i9w==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
       react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
@@ -5122,8 +5133,8 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  tapable@2.2.2:
-    resolution: {integrity: sha512-Re10+NauLTMCudc7T5WLFLAwDhQ0JWdrMK+9B2M8zR5hRExKmsRDCBA7/aV/pNJFltmBFO5BAMlQFi/vq3nKOg==}
+  tapable@2.2.3:
+    resolution: {integrity: sha512-ZL6DDuAlRlLGghwcfmSn9sK3Hr6ArtyudlSAiCqQ6IfE+b+HHbydbYDIG15IfS5do+7XQQBdBiubF/cV2dnDzg==}
     engines: {node: '>=6'}
 
   terser-webpack-plugin@5.3.14:
@@ -8298,6 +8309,13 @@ snapshots:
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.25.2)
 
+  browserslist@4.25.3:
+    dependencies:
+      caniuse-lite: 1.0.30001737
+      electron-to-chromium: 1.5.208
+      node-releases: 2.0.19
+      update-browserslist-db: 1.1.3(browserslist@4.25.3)
+
   buffer-from@1.1.2: {}
 
   buffer@5.7.1:
@@ -8333,6 +8351,8 @@ snapshots:
   camelcase-css@2.0.1: {}
 
   caniuse-lite@1.0.30001735: {}
+
+  caniuse-lite@1.0.30001737: {}
 
   chai@5.3.3:
     dependencies:
@@ -8586,6 +8606,8 @@ snapshots:
 
   electron-to-chromium@1.5.203: {}
 
+  electron-to-chromium@1.5.208: {}
+
   emoji-regex@8.0.0: {}
 
   emoji-regex@9.2.2: {}
@@ -8611,7 +8633,7 @@ snapshots:
   enhanced-resolve@5.18.3:
     dependencies:
       graceful-fs: 4.2.11
-      tapable: 2.2.2
+      tapable: 2.2.3
 
   entities@4.5.0: {}
 
@@ -10449,7 +10471,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  sonner@1.7.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+  sonner@2.0.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
@@ -10633,7 +10655,7 @@ snapshots:
     transitivePeerDependencies:
       - ts-node
 
-  tapable@2.2.2: {}
+  tapable@2.2.3: {}
 
   terser-webpack-plugin@5.3.14(esbuild@0.19.12)(webpack@5.101.3(esbuild@0.19.12)):
     dependencies:
@@ -10836,6 +10858,12 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
+  update-browserslist-db@1.1.3(browserslist@4.25.3):
+    dependencies:
+      browserslist: 4.25.3
+      escalade: 3.2.0
+      picocolors: 1.1.1
+
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
@@ -10981,7 +11009,7 @@ snapshots:
       '@webassemblyjs/wasm-parser': 1.14.1
       acorn: 8.15.0
       acorn-import-phases: 1.0.4(acorn@8.15.0)
-      browserslist: 4.25.2
+      browserslist: 4.25.3
       chrome-trace-event: 1.0.4
       enhanced-resolve: 5.18.3
       es-module-lexer: 1.7.0
@@ -10994,7 +11022,7 @@ snapshots:
       mime-types: 2.1.35
       neo-async: 2.6.2
       schema-utils: 4.3.2
-      tapable: 2.2.2
+      tapable: 2.2.3
       terser-webpack-plugin: 5.3.14(esbuild@0.19.12)(webpack@5.101.3(esbuild@0.19.12))
       watchpack: 2.4.4
       webpack-sources: 3.3.3
