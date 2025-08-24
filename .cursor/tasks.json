@@ -1,0 +1,424 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    // === DEVELOPMENT TASKS ===
+    {
+      "label": "🚀 Start Development Server",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["dev"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typescript",
+        "source": "ts",
+        "applyTo": "closedDocuments",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": ".*ready on.*"
+        }
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "🏗️ Build for Production",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["-w", "build"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "▶️ Start Production Server",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["start"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      },
+      "dependsOn": "🏗️ Build for Production"
+    },
+
+    // === DATABASE TASKS ===
+    {
+      "label": "🗄️ Push Database Schema",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["db:push"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔄 Run Database Migrations",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["db:migrate"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🌱 Seed Database",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["db:seed"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🎛️ Open Drizzle Studio",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["db:studio"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      },
+      "isBackground": true
+    },
+
+    // === TESTING TASKS ===
+    {
+      "label": "🧪 Run Unit Tests",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["test"],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🎭 Run E2E Tests",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["test:e2e"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📊 Run Tests with Coverage",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["test:coverage"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🎪 Run Tests in UI Mode",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["test:ui"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      },
+      "isBackground": true
+    },
+
+    // === CODE QUALITY TASKS ===
+    {
+      "label": "🔍 Lint Code",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["lint"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      },
+      "problemMatcher": ["$biome"]
+    },
+    {
+      "label": "✨ Format Code",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["format"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔧 Fix Code Issues",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["fix"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📝 Type Check",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["type-check"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      },
+      "problemMatcher": ["$tsc"]
+    },
+
+    // === PACKAGE MANAGEMENT TASKS ===
+    {
+      "label": "📦 Install Dependencies",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["install"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔄 Update Dependencies",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["update"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🧹 Clean Install",
+      "type": "shell",
+      "command": "rm -rf node_modules pnpm-lock.yaml && pnpm install",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+
+    // === DEPLOYMENT TASKS ===
+    {
+      "label": "🚀 Deploy to Vercel",
+      "type": "shell",
+      "command": "vercel",
+      "args": ["--prod"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔍 Preview Deployment",
+      "type": "shell",
+      "command": "vercel",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+
+    // === UTILITY TASKS ===
+    {
+      "label": "🧹 Clean Build Artifacts",
+      "type": "shell",
+      "command": "rm -rf .next dist build .turbo coverage playwright-report test-results",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📊 Analyze Bundle",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["analyze"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔐 Check Security",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["audit"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+
+    // === DOCKER TASKS ===
+    {
+      "label": "🐳 Build Docker Image",
+      "type": "shell",
+      "command": "docker",
+      "args": ["build", "-t", "saas-yacht-club", "."],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🐳 Run Docker Container",
+      "type": "shell",
+      "command": "docker",
+      "args": ["run", "-p", "3000:3000", "saas-yacht-club"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      },
+      "isBackground": true
+    },
+
+    // === COMPOSITE TASKS ===
+    {
+      "label": "🚀 Full Development Setup",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "📦 Install Dependencies",
+        "🗄️ Push Database Schema",
+        "🌱 Seed Database",
+        "🚀 Start Development Server"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "✅ Pre-commit Checks",
+      "dependsOrder": "parallel",
+      "dependsOn": [
+        "🔍 Lint Code",
+        "📝 Type Check",
+        "🧪 Run Unit Tests"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🏗️ Production Ready",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "✅ Pre-commit Checks",
+        "🏗️ Build for Production",
+        "🎭 Run E2E Tests"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    }
+  ]
+}

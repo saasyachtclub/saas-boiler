@@ -1,0 +1,289 @@
+{
+  // ⚓ SaaS Yacht Club - Optimized Cursor IDE Settings
+  // Enhanced settings for React 19, Next.js 15, and modern development
+
+  // === EDITOR CONFIGURATION ===
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "source.removeUnusedImports": "explicit"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.wordWrap": "on",
+  "editor.rulers": [80, 100],
+  "editor.minimap.enabled": true,
+  "editor.minimap.maxColumn": 100,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+
+  // === BIOME CONFIGURATION ===
+  "biome.enabled": true,
+  "biome.lspBin": "./node_modules/.bin/biome",
+  "biome.requireConfigFile": true,
+
+  // === TYPESCRIPT CONFIGURATION ===
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.inlayHints.parameterNames.enabled": "literals",
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": false,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+
+  // === JAVASCRIPT/REACT CONFIGURATION ===
+  "javascript.preferences.includePackageJsonAutoImports": "auto",
+  "javascript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "react.snippets.enabled": true,
+
+  // === TAILWIND CSS CONFIGURATION ===
+  "tailwindCSS.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html",
+    "javascript": "html",
+    "javascriptreact": "html"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["classnames\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["twMerge\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["tv\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+  "tailwindCSS.validate": true,
+  "tailwindCSS.lint.cssConflict": "warning",
+  "tailwindCSS.lint.invalidApply": "error",
+  "tailwindCSS.lint.invalidConfigPath": "error",
+  "tailwindCSS.lint.invalidScreen": "error",
+  "tailwindCSS.lint.invalidTailwindDirective": "error",
+  "tailwindCSS.lint.invalidVariant": "error",
+  "tailwindCSS.lint.recommendedVariantOrder": "warning",
+
+  // === EMMET CONFIGURATION ===
+  "emmet.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html",
+    "javascript": "html",
+    "javascriptreact": "html"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.showExpandedAbbreviation": "always",
+
+  // === FILE ASSOCIATIONS ===
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "*.env*": "dotenv",
+    "*.mdc": "markdown",
+    ".cursorrules": "markdown",
+    "*.config.js": "javascript",
+    "*.config.ts": "typescript"
+  },
+
+  // === FILE EXCLUSIONS ===
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/dist": true,
+    "**/.turbo": true,
+    "**/coverage": true,
+    "**/.nyc_output": true,
+    "**/playwright-report": true,
+    "**/test-results": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true
+  },
+
+  // === SEARCH EXCLUSIONS ===
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/dist": true,
+    "**/.turbo": true,
+    "**/coverage": true,
+    "**/.nyc_output": true,
+    "**/playwright-report": true,
+    "**/test-results": true,
+    "**/*.d.ts": true,
+    "**/pnpm-lock.yaml": true,
+    "**/.git": true
+  },
+
+  // === WATCHER EXCLUSIONS ===
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.next/**": true,
+    "**/dist/**": true,
+    "**/.turbo/**": true,
+    "**/coverage/**": true,
+    "**/.nyc_output/**": true,
+    "**/playwright-report/**": true,
+    "**/test-results/**": true
+  },
+
+  // === GIT CONFIGURATION ===
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.enableCommitSigning": false,
+  "git.defaultCloneDirectory": "~/Projects",
+  "git.openRepositoryInParentFolders": "always",
+
+  // === TERMINAL CONFIGURATION ===
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "terminal.integrated.shell.linux": "/bin/bash",
+  "terminal.integrated.shell.windows": "powershell.exe",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.fontFamily": "MesloLGS NF, Consolas, 'Courier New', monospace",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+
+  // === DEBUGGING CONFIGURATION ===
+  "debug.console.fontSize": 14,
+  "debug.console.fontFamily": "MesloLGS NF, Consolas, 'Courier New', monospace",
+  "debug.inlineValues": "auto",
+  "debug.showBreakpointsInOverviewRuler": true,
+
+  // === WORKSPACE CONFIGURATION ===
+  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.iconTheme": "vs-seti",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.startupEditor": "welcomePage",
+  "workbench.tree.indent": 20,
+  "workbench.tree.renderIndentGuides": "always",
+
+  // === EXPLORER CONFIGURATION ===
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.compactFolders": false,
+  "explorer.sortOrder": "type",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, pnpm-lock.yaml, yarn.lock, .npmrc, .yarnrc",
+    ".env": ".env.*",
+    "tailwind.config.*": "tailwind.config.*, postcss.config.*",
+    "next.config.*": "next-env.d.ts",
+    "README.md": "CHANGELOG.md, CONTRIBUTING.md, LICENSE, CODE_OF_CONDUCT.md, SECURITY.md"
+  },
+
+  // === BREADCRUMBS CONFIGURATION ===
+  "breadcrumbs.enabled": true,
+  "breadcrumbs.filePath": "on",
+  "breadcrumbs.symbolPath": "on",
+
+  // === PROBLEMS CONFIGURATION ===
+  "problems.decorations.enabled": true,
+  "problems.showCurrentInStatus": true,
+
+  // === CURSOR AI CONFIGURATION ===
+  "cursor.chat.alwaysNewSession": false,
+  "cursor.general.enableWinCodeBlocks": true,
+  "cursor.cpp.disabledLanguages": [],
+
+  // === LANGUAGE SPECIFIC SETTINGS ===
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
+  },
+
+  // === EXTENSION SPECIFIC SETTINGS ===
+  "extensions.ignoreRecommendations": false,
+  "extensions.showRecommendationsOnlyOnDemand": false,
+
+  // === SECURITY SETTINGS ===
+  "security.workspace.trust.untrustedFiles": "prompt",
+  "security.workspace.trust.banner": "always",
+  "security.workspace.trust.startupPrompt": "always",
+
+  // === PERFORMANCE SETTINGS ===
+  "search.smartCase": true,
+  "search.useGlobalIgnoreFiles": true,
+  "search.useIgnoreFiles": true,
+  "search.followSymlinks": false,
+  "files.hotExit": "onExitAndWindowClose",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+
+  // === INTEGRATED TERMINAL SETTINGS ===
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "/bin/zsh",
+      "args": ["-l"]
+    }
+  }
+}

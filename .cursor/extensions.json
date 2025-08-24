@@ -1,0 +1,97 @@
+{
+  "recommendations": [
+    // === CORE DEVELOPMENT ===
+    "biomejs.biome",                    // Biome - Fast linter and formatter (replaces ESLint + Prettier)
+    "ms-vscode.vscode-typescript-next", // TypeScript support with latest features
+    "bradlc.vscode-tailwindcss",        // Tailwind CSS IntelliSense
+    "ms-vscode.vscode-json",            // JSON language support
+
+    // === REACT & NEXT.JS ===
+    "ms-vscode.vscode-react-native",    // React Native tools (includes React support)
+    "formulahendry.auto-rename-tag",    // Auto rename paired HTML/JSX tags
+    "christian-kohler.path-intellisense", // Path autocomplete
+    "ms-vscode.vscode-eslint",          // ESLint (backup for non-Biome projects)
+
+    // === DATABASE & API ===
+    "ms-vscode.vscode-postgres",        // PostgreSQL support
+    "humao.rest-client",                // REST client for API testing
+    "rangav.vscode-thunder-client",     // Thunder Client - API testing
+
+    // === GIT & VERSION CONTROL ===
+    "eamodio.gitlens",                  // GitLens - Git supercharged
+    "github.vscode-pull-request-github", // GitHub Pull Requests
+    "github.copilot",                   // GitHub Copilot (AI pair programming)
+    "github.copilot-chat",              // GitHub Copilot Chat
+
+    // === TESTING ===
+    "ms-playwright.playwright",         // Playwright Test for VS Code
+    "vitest.explorer",                  // Vitest Test Explorer
+    "ms-vscode.test-adapter-converter", // Test Explorer UI
+
+    // === PRODUCTIVITY ===
+    "ms-vscode.vscode-todo-highlight",  // TODO Highlight
+    "gruntfuggly.todo-tree",           // Todo Tree
+    "aaron-bond.better-comments",       // Better Comments
+    "streetsidesoftware.code-spell-checker", // Code Spell Checker
+    "usernamehw.errorlens",            // Error Lens - Inline error display
+
+    // === UI/UX DEVELOPMENT ===
+    "ms-vscode.vscode-css-peek",        // CSS Peek
+    "zignd.html-css-class-completion",  // HTML CSS Class Completion
+    "pranaygp.vscode-css-peek",        // CSS Peek alternative
+    "bradlc.vscode-tailwindcss",       // Tailwind CSS IntelliSense (duplicate for emphasis)
+
+    // === MARKDOWN & DOCUMENTATION ===
+    "yzhang.markdown-all-in-one",      // Markdown All in One
+    "davidanson.vscode-markdownlint",  // Markdown linting
+    "bierner.markdown-mermaid",        // Mermaid diagram support
+
+    // === DOCKER & DEPLOYMENT ===
+    "ms-azuretools.vscode-docker",     // Docker support
+    "ms-vscode-remote.remote-containers", // Dev Containers
+
+    // === ENVIRONMENT & CONFIG ===
+    "mikestead.dotenv",                // .env file support
+    "redhat.vscode-yaml",              // YAML language support
+    "tamasfe.even-better-toml",        // TOML language support
+
+    // === THEME & APPEARANCE ===
+    "pkief.material-icon-theme",       // Material Icon Theme
+    "github.github-vscode-theme",      // GitHub Theme
+    "dracula-theme.theme-dracula",     // Dracula Theme
+    "ms-vscode.theme-tomorrowkit",     // Tomorrow Theme Kit
+
+    // === UTILITIES ===
+    "ms-vscode.vscode-file-watcher",   // File Watcher
+    "alefragnani.bookmarks",           // Bookmarks
+    "ms-vscode.vscode-multi-cursor",   // Multi-cursor utilities
+    "formulahendry.code-runner",       // Code Runner
+
+    // === SECURITY ===
+    "ms-vscode.vscode-security",       // Security scanning
+    "snyk-security.snyk-vulnerability-scanner", // Snyk vulnerability scanner
+
+    // === PERFORMANCE & MONITORING ===
+    "ms-vscode.vscode-perf",          // Performance monitoring
+    "wallabyjs.console-ninja",        // Console Ninja - Enhanced console
+
+    // === COLLABORATION ===
+    "ms-vsliveshare.vsliveshare",     // Live Share for collaboration
+    "ms-vsliveshare.vsliveshare-audio", // Live Share Audio
+
+    // === SPECIFIC TO SAAS YACHT CLUB ===
+    "stripe.vscode-stripe",            // Stripe extension for webhooks and API
+    "ms-vscode.vscode-postgres",      // PostgreSQL (duplicate for emphasis)
+    "bradlc.vscode-tailwindcss"       // Tailwind (duplicate for emphasis)
+  ],
+  "unwantedRecommendations": [
+    // Extensions that conflict with our setup
+    "esbenp.prettier-vscode",         // We use Biome instead of Prettier
+    "dbaeumer.vscode-eslint",         // We use Biome instead of ESLint (except as backup)
+    "ms-vscode.vscode-typescript",    // We use the Next version
+    "bradlc.vscode-tailwindcss-old", // Old version of Tailwind extension
+    "formulahendry.auto-close-tag",   // Conflicts with auto-rename-tag
+    "ms-vscode.vscode-css",          // Basic CSS support (we have better alternatives)
+    "ms-vscode.vscode-html"          // Basic HTML support (we have better alternatives)
+  ]
+}

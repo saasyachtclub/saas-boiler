@@ -1,0 +1,285 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    // === NEXT.JS DEBUGGING ===
+    {
+      "name": "🚀 Debug Next.js (Full Stack)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/next",
+      "args": ["dev"],
+      "cwd": "${workspaceFolder}/apps/web",
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "serverReadyAction": {
+        "pattern": "ready on",
+        "uriFormat": "http://localhost:3000",
+        "action": "openExternally"
+      },
+      "presentation": {
+        "hidden": false,
+        "group": "Next.js",
+        "order": 1
+      }
+    },
+    {
+      "name": "🖥️ Debug Next.js (Server Only)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/next",
+      "args": ["dev"],
+      "cwd": "${workspaceFolder}/apps/web",
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**"
+      ],
+      "presentation": {
+        "hidden": false,
+        "group": "Next.js",
+        "order": 2
+      }
+    },
+    {
+      "name": "🌐 Debug Next.js (Client)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/apps/web",
+      "sourceMapPathOverrides": {
+        "webpack://_N_E/*": "${webRoot}/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*"
+      },
+      "presentation": {
+        "hidden": false,
+        "group": "Next.js",
+        "order": 3
+      }
+    },
+
+    // === API DEBUGGING ===
+    {
+      "name": "🔌 Debug API Routes",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/next",
+      "args": ["dev"],
+      "cwd": "${workspaceFolder}/apps/web",
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "api:*"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**"
+      ],
+      "presentation": {
+        "hidden": false,
+        "group": "API",
+        "order": 1
+      }
+    },
+    {
+      "name": "🗄️ Debug Database Operations",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/next",
+      "args": ["dev"],
+      "cwd": "${workspaceFolder}/apps/web",
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "db:*,drizzle:*"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**"
+      ],
+      "presentation": {
+        "hidden": false,
+        "group": "Database",
+        "order": 1
+      }
+    },
+
+    // === TESTING DEBUGGING ===
+    {
+      "name": "🧪 Debug Unit Tests",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/vitest",
+      "args": ["run", "--reporter=verbose"],
+      "cwd": "${workspaceFolder}/apps/web",
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "test"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**"
+      ],
+      "presentation": {
+        "hidden": false,
+        "group": "Testing",
+        "order": 1
+      }
+    },
+    {
+      "name": "🎭 Debug E2E Tests",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/playwright",
+      "args": ["test", "--debug"],
+      "cwd": "${workspaceFolder}/apps/web",
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "test",
+        "PWDEBUG": "1"
+      },
+      "presentation": {
+        "hidden": false,
+        "group": "Testing",
+        "order": 2
+      }
+    },
+    {
+      "name": "🧪 Debug Current Test File",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/vitest",
+      "args": ["run", "${relativeFile}"],
+      "cwd": "${workspaceFolder}/apps/web",
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "test"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**"
+      ],
+      "presentation": {
+        "hidden": false,
+        "group": "Testing",
+        "order": 3
+      }
+    },
+
+    // === STRIPE DEBUGGING ===
+    {
+      "name": "💳 Debug Stripe Webhooks",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/stripe",
+      "args": ["listen", "--forward-to", "localhost:3000/api/stripe/webhook"],
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "presentation": {
+        "hidden": false,
+        "group": "Stripe",
+        "order": 1
+      }
+    },
+
+    // === BUILD DEBUGGING ===
+    {
+      "name": "🏗️ Debug Build Process",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/next",
+      "args": ["build"],
+      "cwd": "${workspaceFolder}/apps/web",
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "production",
+        "DEBUG": "next:*"
+      },
+      "presentation": {
+        "hidden": false,
+        "group": "Build",
+        "order": 1
+      }
+    },
+    {
+      "name": "📊 Debug Bundle Analyzer",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/next",
+      "args": ["build"],
+      "cwd": "${workspaceFolder}/apps/web",
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "production",
+        "ANALYZE": "true"
+      },
+      "presentation": {
+        "hidden": false,
+        "group": "Build",
+        "order": 2
+      }
+    },
+
+    // === ATTACH CONFIGURATIONS ===
+    {
+      "name": "🔗 Attach to Running Process",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**"
+      ],
+      "presentation": {
+        "hidden": false,
+        "group": "Attach",
+        "order": 1
+      }
+    },
+    {
+      "name": "🌐 Attach to Chrome",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}/apps/web",
+      "presentation": {
+        "hidden": false,
+        "group": "Attach",
+        "order": 2
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "🚀 Full Stack Debug",
+      "configurations": [
+        "🖥️ Debug Next.js (Server Only)",
+        "🌐 Debug Next.js (Client)"
+      ],
+      "presentation": {
+        "hidden": false,
+        "group": "Compound",
+        "order": 1
+      }
+    },
+    {
+      "name": "🧪 Test Everything",
+      "configurations": [
+        "🧪 Debug Unit Tests",
+        "🎭 Debug E2E Tests"
+      ],
+      "presentation": {
+        "hidden": false,
+        "group": "Compound",
+        "order": 2
+      }
+    }
+  ]
+}
