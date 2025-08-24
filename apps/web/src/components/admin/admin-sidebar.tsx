@@ -55,7 +55,7 @@ export function AdminSidebar({ user }: AdminSidebarProps) {
         <div className="flex items-center space-x-3">
           <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
             <span className="text-sm font-medium">
-              {user.name?.[0] || user.email[0].toUpperCase()}
+              {user.name?.[0] || user.email?.[0]?.toUpperCase() || "U"}
             </span>
           </div>
           <div className="flex-1 min-w-0">

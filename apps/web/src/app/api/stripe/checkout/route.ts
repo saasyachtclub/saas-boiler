@@ -33,6 +33,9 @@ export const POST = withAxiom(async function POST(req: NextRequest) {
     // Create or get Stripe customer
     const customer = await getOrCreateCustomer(session.user.email, session.user.name)
 
+    if (!customer) {
+      return NextResponse.json({ error: "Failed to create customer" }, { status: 500 })
+    }
     // Create checkout session
     const checkoutSession = await createCheckoutSession({
       customerId: customer.id,

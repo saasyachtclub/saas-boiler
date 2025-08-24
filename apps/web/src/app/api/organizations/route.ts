@@ -98,6 +98,9 @@ export const POST = withAxiom(async function POST(req: NextRequest) {
       })
       .returning()
 
+    if (!organization) {
+      return NextResponse.json({ error: "Failed to create organization" }, { status: 500 })
+    }
     // Add user as owner
     await db.insert(organizationMembers).values({
       organizationId: organization.id,
@@ -160,6 +163,9 @@ export const PUT = withAxiom(async function PUT(req: NextRequest) {
       .where(eq(organizations.id, organizationId))
       .returning()
 
+    if (!updatedOrg) {
+      return NextResponse.json({ error: "Failed to create organization" }, { status: 500 })
+    }
     return NextResponse.json({ organization: updatedOrg })
   } catch (error) {
     captureError(error, { scope: 'organizations.put' })

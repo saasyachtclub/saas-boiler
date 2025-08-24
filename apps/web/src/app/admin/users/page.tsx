@@ -69,7 +69,7 @@ export default async function AdminUsersPage() {
                       <Avatar className="h-8 w-8">
                         <AvatarImage src={user.image || undefined} alt={user.name || 'User'} />
                         <AvatarFallback>
-                          {user.name?.[0] || user.email[0].toUpperCase()}
+                          {user.name?.[0] || user.email?.[0]?.toUpperCase() || "U"}
                         </AvatarFallback>
                       </Avatar>
                       <div>

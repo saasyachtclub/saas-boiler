@@ -41,6 +41,7 @@ export function generateCSRFToken(): string {
 export function validateCSRFToken(token: string, secret: string): boolean {
   try {
     const [timestamp, hash] = token.split('.')
+    if (!timestamp || !hash) return false
     const expectedHash = crypto.createHmac('sha256', secret).update(timestamp).digest('hex')
 
     return hash === expectedHash
@@ -63,7 +64,7 @@ export function sanitizeSqlInput(input: string): string {
   return input.replace(/['";\\]/g, '')
 }
 
-// XSS protection
+// HTML escape function
 export function escapeHtml(text: string): string {
   const map: Record<string, string> = {
     '&': '&amp;',
@@ -73,9 +74,8 @@ export function escapeHtml(text: string): string {
     "'": '&#x27;',
     '/': '&#x2F;',
   }
-  return text.replace(/[&<>"'/]/g, (m) => map[m])
+  return text.replace(/[&<>"'/]/g, (m) => map[m] || m)
 }
-
 // Password strength validation
 export function validatePasswordStrength(password: string): {
   isValid: boolean
@@ -175,8 +175,9 @@ export class Encryption {
 
   decrypt(encryptedData: string): string {
     const parts = encryptedData.split(':')
-    const iv = Buffer.from(parts[0], 'hex')
-    const authTag = Buffer.from(parts[1], 'hex')
+    if (parts.length !== 3) throw new Error("Invalid encrypted data format")
+    const iv = Buffer.from(parts[0]!, 'hex')
+    const authTag = Buffer.from(parts[1]!, 'hex')
     const encrypted = parts[2]
 
     const decipher = crypto.createDecipher(this.algorithm, this.key) as any

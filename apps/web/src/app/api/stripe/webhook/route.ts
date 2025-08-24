@@ -73,8 +73,11 @@ async function handleCheckoutCompleted(session: any) {
   }
 
   // Create subscription record
-  await db.insert(subscriptions).values({
-    userId: customer.metadata.userId,
+  const userId = customer.metadata.userId
+  if (!userId) {
+    throw new Error("Customer userId not found in metadata")
+  }  await db.insert(subscriptions).values({
+    userId: userId,
     productId: product.id,
     stripeSubscriptionId: session.subscription,
     status: 'active',
