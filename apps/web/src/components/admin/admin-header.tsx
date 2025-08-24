@@ -1,7 +1,7 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,8 +10,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Bell, Search, LogOut } from 'lucide-react'
 import { signOut } from '@/lib/auth-client'
+import { Bell, LogOut, Search } from 'lucide-react'
 
 interface AdminHeaderProps {
   user: {
@@ -19,6 +19,7 @@ interface AdminHeaderProps {
     name?: string
     email: string
     role: string
+    image?: string
   }
 }
 
@@ -26,13 +27,13 @@ export function AdminHeader({ user }: AdminHeaderProps) {
   const handleSignOut = async () => {
     await signOut({
       fetchOptions: {
-        onRequest: (context) => {
+        onRequest: () => {
           // Running on the server, do nothing
         },
-        onResponse: (context) => {
+        onResponse: () => {
           // Running on the client
         },
-        onError: (context) => {
+        onError: () => {
           // Running on the client
         },
       },
@@ -67,21 +68,15 @@ export function AdminHeader({ user }: AdminHeaderProps) {
             <Button variant="ghost" className="relative h-8 w-8 rounded-full">
               <Avatar className="h-8 w-8">
                 <AvatarImage src={user.image} alt={user.name || 'User'} />
-                <AvatarFallback>
-                  {user.name?.[0] || user.email[0].toUpperCase()}
-                </AvatarFallback>
+                <AvatarFallback>{user.name?.[0] || user.email[0].toUpperCase()}</AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="end" forceMount>
             <DropdownMenuLabel className="font-normal">
               <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">
-                  {user.name || 'Admin User'}
-                </p>
-                <p className="text-xs leading-none text-muted-foreground">
-                  {user.email}
-                </p>
+                <p className="text-sm font-medium leading-none">{user.name || 'Admin User'}</p>
+                <p className="text-xs leading-none text-muted-foreground">{user.email}</p>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />

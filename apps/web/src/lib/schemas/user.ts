@@ -2,10 +2,20 @@ import { z } from 'zod'
 
 // Profile update schema
 export const profileUpdateSchema = z.object({
-  firstName: z.string().min(1, 'First name is required').max(100, 'First name must be less than 100 characters'),
-  lastName: z.string().min(1, 'Last name is required').max(100, 'Last name must be less than 100 characters'),
+  firstName: z
+    .string()
+    .min(1, 'First name is required')
+    .max(100, 'First name must be less than 100 characters'),
+  lastName: z
+    .string()
+    .min(1, 'Last name is required')
+    .max(100, 'Last name must be less than 100 characters'),
   company: z.string().max(255, 'Company name must be less than 255 characters').optional(),
-  phone: z.string().regex(/^\+?[\d\s\-\(\)]+$/, 'Please enter a valid phone number').optional().or(z.literal('')),
+  phone: z
+    .string()
+    .regex(/^\+?[\d\s\-\(\)]+$/, 'Please enter a valid phone number')
+    .optional()
+    .or(z.literal('')),
   timezone: z.string().optional(),
 })
 

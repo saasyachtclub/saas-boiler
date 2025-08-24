@@ -1,0 +1,91 @@
+name: 🏷️ Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    name: 🚀 Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '9'
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: 📥 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🏗️ Build application
+        run: pnpm build
+        env:
+          DATABASE_URL: "postgresql://mock:mock@localhost:5432/mock"
+          BETTER_AUTH_SECRET: "mock-secret-key-for-build-only-32-chars"
+          BETTER_AUTH_URL: "http://localhost:3000"
+          STRIPE_SECRET_KEY: "sk_test_mock"
+          STRIPE_PUBLISHABLE_KEY: "pk_test_mock"
+
+      - name: 📝 Generate changelog
+        id: changelog
+        run: |
+          # Get the tag name
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+
+          # Get the previous tag
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+
+          # Generate changelog
+          if [ -n "$PREVIOUS_TAG" ]; then
+            CHANGELOG=$(git log --pretty=format:"- %s (%h)" $PREVIOUS_TAG..HEAD)
+          else
+            CHANGELOG=$(git log --pretty=format:"- %s (%h)")
+          fi
+
+          # Save changelog to file
+          echo "## What's Changed" > CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "$CHANGELOG" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "**Full Changelog**: https://github.com/${{ github.repository }}/compare/$PREVIOUS_TAG...$TAG_NAME" >> CHANGELOG.md
+
+          # Set output
+          echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+
+      - name: 🏷️ Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag_name }}
+          name: Release ${{ steps.changelog.outputs.tag_name }}
+          body_path: CHANGELOG.md
+          draft: false
+          prerelease: ${{ contains(steps.changelog.outputs.tag_name, '-') }}
+          generate_release_notes: true
+          files: |
+            LICENSE
+            README.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📊 Update release metrics
+        run: |
+          echo "✅ Release ${{ steps.changelog.outputs.tag_name }} created successfully!"
+          echo "📦 Build artifacts generated"
+          echo "📝 Changelog updated"
+          echo "🚀 Ready for deployment"

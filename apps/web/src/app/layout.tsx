@@ -6,7 +6,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'SaaS Better - Ultimate SaaS Boilerplate',
-  description: 'The ultimate SaaS boilerplate with Next.js 15, React 19, Better Auth, Stripe, Neon, and Drizzle ORM',
+  description:
+    'The ultimate SaaS boilerplate with Next.js 15, React 19, Better Auth, Stripe, Neon, and Drizzle ORM',
   keywords: ['saas', 'boilerplate', 'nextjs', 'react', 'typescript', 'stripe', 'auth'],
 }
 
@@ -17,9 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {children}
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }

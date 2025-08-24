@@ -1,20 +1,20 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import {
-  Users,
-  DollarSign,
-  Settings,
-  BarChart3,
-  Shield,
-  Key,
   Activity,
+  BarChart3,
   ChevronLeft,
+  DollarSign,
+  Key,
+  Settings,
+  Shield,
+  Users,
 } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 interface AdminSidebarProps {
   user: {
@@ -59,24 +59,18 @@ export function AdminSidebar({ user }: AdminSidebarProps) {
             </span>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium truncate">
-              {user.name || 'Admin User'}
-            </p>
-            <p className="text-xs text-muted-foreground truncate">
-              {user.email}
-            </p>
+            <p className="text-sm font-medium truncate">{user.name || 'Admin User'}</p>
+            <p className="text-xs text-muted-foreground truncate">{user.email}</p>
           </div>
-          <Badge variant={user.role === 'super_admin' ? 'default' : 'secondary'}>
-            {user.role}
-          </Badge>
+          <Badge variant={user.role === 'super_admin' ? 'default' : 'secondary'}>{user.role}</Badge>
         </div>
       </div>
 
       {/* Navigation */}
       <nav className="flex-1 space-y-1 p-4">
         {navigation.map((item) => {
-          const isActive = pathname === item.href ||
-            (item.href !== '/admin' && pathname.startsWith(item.href))
+          const isActive =
+            pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href))
 
           return (
             <Link

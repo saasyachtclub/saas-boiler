@@ -2,7 +2,10 @@ import { z } from 'zod'
 
 // Product creation schema (admin only)
 export const productCreateSchema = z.object({
-  name: z.string().min(1, 'Product name is required').max(255, 'Product name must be less than 255 characters'),
+  name: z
+    .string()
+    .min(1, 'Product name is required')
+    .max(255, 'Product name must be less than 255 characters'),
   description: z.string().optional(),
   price: z.number().positive('Price must be positive'),
   features: z.array(z.string()).default([]),
@@ -34,14 +37,21 @@ export const webhookEventSchema = z.object({
   }),
   livemode: z.boolean(),
   pending_webhooks: z.number(),
-  request: z.object({
-    id: z.string().optional(),
-    idempotency_key: z.string().optional(),
-  }).optional(),
+  request: z
+    .object({
+      id: z.string().optional(),
+      idempotency_key: z.string().optional(),
+    })
+    .optional(),
   type: z.string(),
 })
 
 // Customer portal schema
 export const customerPortalSchema = z.object({
   returnUrl: z.string().url('Invalid return URL'),
+})
+
+// Credits purchase schema
+export const purchaseCreditsSchema = z.object({
+  packageType: z.enum(['starter', 'pro', 'enterprise', 'custom']),
 })

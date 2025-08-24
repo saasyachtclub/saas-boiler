@@ -1,9 +1,9 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Users, DollarSign, TrendingUp, Activity } from 'lucide-react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { db } from '@/lib/db'
-import { users, subscriptions, products } from '@/lib/db/schema'
-import { eq, count, sum } from 'drizzle-orm'
+import { products, subscriptions, users } from '@/lib/db/schema'
+import { count, eq, sum } from 'drizzle-orm'
+import { Activity, DollarSign, TrendingUp, Users } from 'lucide-react'
 
 export default async function AdminDashboard() {
   // Get stats
@@ -15,17 +15,13 @@ export default async function AdminDashboard() {
 
   const totalRevenue = await db
     .select({
-      revenue: sum(products.price)
+      revenue: sum(products.price),
     })
     .from(subscriptions)
     .leftJoin(products, eq(subscriptions.productId, products.id))
     .where(eq(subscriptions.status, 'active'))
 
-  const recentUsers = await db
-    .select()
-    .from(users)
-    .orderBy(users.createdAt)
-    .limit(5)
+  const recentUsers = await db.select().from(users).orderBy(users.createdAt).limit(5)
 
   const stats = [
     {
@@ -68,16 +64,12 @@ export default async function AdminDashboard() {
         {stats.map((stat) => (
           <Card key={stat.title}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                {stat.title}
-              </CardTitle>
+              <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
               <stat.icon className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stat.value}</div>
-              <p className="text-xs text-muted-foreground">
-                {stat.description}
-              </p>
+              <p className="text-xs text-muted-foreground">{stat.description}</p>
             </CardContent>
           </Card>
         ))}
@@ -88,9 +80,7 @@ export default async function AdminDashboard() {
         <Card>
           <CardHeader>
             <CardTitle>Recent Users</CardTitle>
-            <CardDescription>
-              Latest user registrations
-            </CardDescription>
+            <CardDescription>Latest user registrations</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -119,9 +109,7 @@ export default async function AdminDashboard() {
         <Card>
           <CardHeader>
             <CardTitle>System Status</CardTitle>
-            <CardDescription>
-              Current system health and metrics
-            </CardDescription>
+            <CardDescription>Current system health and metrics</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">

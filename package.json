@@ -1,8 +1,45 @@
 {
-  "name": "saas-better-monorepo",
+  "name": "saas-yacht-club-boilerplate",
   "version": "1.0.0",
+  "description": "⚓ SaaS Yacht Club - The Ultimate FREE & Open Source SaaS Boilerplate - Production-ready Next.js 15 + React 19 + TypeScript + Better Auth + Stripe + Neon PostgreSQL",
   "private": true,
   "packageManager": "pnpm@9.12.0",
+  "author": {
+    "name": "SaaS Yacht Club",
+    "email": "hello@saasyachtclub.com",
+    "url": "https://saasyachtclub.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saasyachtclub/saas-boiler.git"
+  },
+  "homepage": "https://saasyachtclub.com",
+  "bugs": {
+    "url": "https://github.com/saasyachtclub/saas-boiler/issues"
+  },
+  "keywords": [
+    "saas",
+    "boilerplate",
+    "nextjs",
+    "react",
+    "typescript",
+    "stripe",
+    "better-auth",
+    "neon",
+    "postgresql",
+    "drizzle",
+    "shadcn-ui",
+    "tailwindcss",
+    "monorepo",
+    "turbo",
+    "vercel",
+    "starter",
+    "template"
+  ],
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
@@ -24,15 +61,20 @@
     "install:all": "pnpm install && pnpm run db:generate",
     "deploy": "turbo build --filter=web && vercel --prod",
     "preview": "turbo build --filter=web && vercel",
-    "admin": "tsx scripts/admin-cli.ts"
+    "setup": "tsx scripts/setup-cli.ts",
+    "admin": "tsx scripts/admin-cli.ts",
+    "reset": "tsx scripts/reset-cli.ts",
+    "repair": "tsx scripts/repair-cli.ts",
+    "vercel:setup": "vercel && echo '🔗 Link your project with Vercel...'",
+    "vercel:env": "vercel env pull .env.local && echo '📥 Pulled environment variables from Vercel'",
+    "vercel:deploy": "turbo build --filter=web && vercel --prod",
+    "vercel:preview": "turbo build --filter=web && vercel",
+    "neon:connect": "echo '🌐 Connect to Neon: https://console.neon.tech'",
+    "neon:setup": "echo '🔧 Run: pnpm vercel:env to pull Neon connection strings'",
+    "neon:test": "tsx scripts/test-neon-connection.ts"
   },
   "devDependencies": {
-    "turbo": "^2.5.6",
-    "tsx": "^4.20.4"
-  },
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "tooling/*"
-  ]
+    "turbo": "^2.4.4",
+    "tsx": "^4.19.2"
+  }
 }

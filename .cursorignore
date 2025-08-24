@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.turbo/
+.vercel/
+dist/
+out/
+coverage/
+playwright-report/
+blob-report/
+.pnpm-store/
+**/*.min.*
+**/*.map

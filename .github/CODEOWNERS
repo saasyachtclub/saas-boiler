@@ -1,0 +1,148 @@
+# 👥 SaaS Yacht Club - Code Owners Configuration
+# 
+# This file defines who is responsible for reviewing changes to different parts of the codebase.
+# When a pull request is opened, the appropriate code owners will be automatically requested for review.
+#
+# Learn more: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# ================================
+# 🌐 GLOBAL OWNERSHIP
+# ================================
+# Default owners for everything in the repo
+# These users will be requested for review when someone opens a pull request
+* @saasyachtclub
+
+# ================================
+# 📚 DOCUMENTATION
+# ================================
+*.md @saasyachtclub
+docs/ @saasyachtclub
+.github/ @saasyachtclub
+
+# ================================
+# 🔧 CONFIGURATION FILES
+# ================================
+# Root configuration files
+*.json @saasyachtclub
+*.yml @saasyachtclub
+*.yaml @saasyachtclub
+*.config.* @saasyachtclub
+.*rc @saasyachtclub
+.*rc.* @saasyachtclub
+
+# Package management
+package.json @saasyachtclub
+pnpm-lock.yaml @saasyachtclub
+pnpm-workspace.yaml @saasyachtclub
+
+# Build and deployment
+turbo.json @saasyachtclub
+vercel.json @saasyachtclub
+Dockerfile* @saasyachtclub
+docker-compose*.yml @saasyachtclub
+
+# ================================
+# 🔒 SECURITY & SENSITIVE FILES
+# ================================
+# Security policies and configurations
+SECURITY.md @saasyachtclub
+.github/workflows/ @saasyachtclub
+.env.example @saasyachtclub
+
+# Authentication and authorization
+apps/web/src/lib/auth/ @saasyachtclub
+apps/web/src/middleware.ts @saasyachtclub
+
+# Database schemas and migrations
+apps/web/src/lib/db/ @saasyachtclub
+apps/web/drizzle.config.ts @saasyachtclub
+
+# Payment processing
+apps/web/src/lib/stripe/ @saasyachtclub
+apps/web/src/app/api/stripe/ @saasyachtclub
+
+# Security utilities
+apps/web/src/lib/security/ @saasyachtclub
+
+# ================================
+# 🚀 CORE APPLICATION
+# ================================
+# API routes - require careful review
+apps/web/src/app/api/ @saasyachtclub
+
+# Core business logic
+apps/web/src/lib/ @saasyachtclub
+
+# Database operations
+apps/web/src/lib/db/schema.ts @saasyachtclub
+
+# ================================
+# 🎨 UI & COMPONENTS
+# ================================
+# Core UI components
+apps/web/src/components/ui/ @saasyachtclub
+
+# Admin components - sensitive area
+apps/web/src/components/admin/ @saasyachtclub
+apps/web/src/app/admin/ @saasyachtclub
+
+# Authentication components
+apps/web/src/components/auth/ @saasyachtclub
+apps/web/src/app/auth/ @saasyachtclub
+
+# ================================
+# 🧪 TESTING
+# ================================
+# Test configurations
+**/*.test.* @saasyachtclub
+**/*.spec.* @saasyachtclub
+**/playwright.config.* @saasyachtclub
+**/vitest.config.* @saasyachtclub
+**/__tests__/ @saasyachtclub
+
+# ================================
+# 🔄 CI/CD & AUTOMATION
+# ================================
+# GitHub Actions workflows
+.github/workflows/ @saasyachtclub
+
+# Scripts and automation
+scripts/ @saasyachtclub
+
+# ================================
+# 🛠️ TOOLING & DEVELOPMENT
+# ================================
+# Development tooling
+tooling/ @saasyachtclub
+.cursor/ @saasyachtclub
+
+# Linting and formatting
+.biome.json* @saasyachtclub
+.eslint* @saasyachtclub
+.prettier* @saasyachtclub
+
+# TypeScript configuration
+**/tsconfig*.json @saasyachtclub
+
+# ================================
+# 📦 PACKAGE SPECIFIC
+# ================================
+# Web app package
+apps/web/package.json @saasyachtclub
+
+# Shared packages (if any)
+packages/ @saasyachtclub
+
+# ================================
+# 🎯 SPECIAL CASES
+# ================================
+# License and legal
+LICENSE @saasyachtclub
+CONTRIBUTING.md @saasyachtclub
+CODE_OF_CONDUCT.md @saasyachtclub
+
+# Changelog and releases
+CHANGELOG.md @saasyachtclub
+
+# Root README - very important
+README.md @saasyachtclub

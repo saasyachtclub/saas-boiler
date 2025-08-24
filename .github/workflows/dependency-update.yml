@@ -1,0 +1,183 @@
+name: 📦 Dependency Updates
+
+on:
+  schedule:
+    # Run every Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-dependencies:
+    name: 🔄 Update Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '9'
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: 📥 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🔄 Update dependencies
+        run: |
+          # Update all dependencies to latest compatible versions
+          pnpm update --latest
+
+          # Check if there are any changes
+          if git diff --quiet pnpm-lock.yaml; then
+            echo "No dependency updates available"
+            echo "has_updates=false" >> $GITHUB_ENV
+          else
+            echo "Dependencies updated"
+            echo "has_updates=true" >> $GITHUB_ENV
+          fi
+
+      - name: 🧪 Run tests after update
+        if: env.has_updates == 'true'
+        run: |
+          pnpm test
+          pnpm lint
+          pnpm type-check
+
+      - name: 🏗️ Test build
+        if: env.has_updates == 'true'
+        run: pnpm build
+        env:
+          DATABASE_URL: "postgresql://mock:mock@localhost:5432/mock"
+          BETTER_AUTH_SECRET: "mock-secret-key-for-build-only-32-chars"
+          BETTER_AUTH_URL: "http://localhost:3000"
+          STRIPE_SECRET_KEY: "sk_test_mock"
+          STRIPE_PUBLISHABLE_KEY: "pk_test_mock"
+
+      - name: 📝 Generate update summary
+        if: env.has_updates == 'true'
+        run: |
+          echo "## 📦 Dependency Updates" > update-summary.md
+          echo "" >> update-summary.md
+          echo "This PR updates the following dependencies to their latest compatible versions:" >> update-summary.md
+          echo "" >> update-summary.md
+
+          # Get updated packages
+          git diff pnpm-lock.yaml | grep "+" | grep -E "(version|resolved)" | head -20 >> update-summary.md || true
+
+          echo "" >> update-summary.md
+          echo "### ✅ Verification" >> update-summary.md
+          echo "- [x] Tests pass" >> update-summary.md
+          echo "- [x] Build succeeds" >> update-summary.md
+          echo "- [x] Linting passes" >> update-summary.md
+          echo "- [x] Type checking passes" >> update-summary.md
+          echo "" >> update-summary.md
+          echo "### 🤖 Automated Update" >> update-summary.md
+          echo "This PR was automatically created by the dependency update workflow." >> update-summary.md
+          echo "Please review the changes and merge if everything looks good." >> update-summary.md
+
+      - name: 🔀 Create Pull Request
+        if: env.has_updates == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update dependencies to latest versions"
+          title: "📦 chore: update dependencies"
+          body-path: update-summary.md
+          branch: chore/dependency-updates
+          delete-branch: true
+          labels: |
+            dependencies
+            automated
+            chore
+          reviewers: |
+            # Add your GitHub usernames here
+          assignees: |
+            # Add your GitHub usernames here
+
+  security-audit:
+    name: 🔒 Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '9'
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: 📥 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🔒 Run security audit
+        run: |
+          # Run audit and capture output
+          pnpm audit --audit-level moderate > audit-results.txt 2>&1 || true
+
+          # Check if there are vulnerabilities
+          if grep -q "vulnerabilities" audit-results.txt; then
+            echo "Security vulnerabilities found!"
+            cat audit-results.txt
+
+            # Create issue if vulnerabilities found
+            echo "create_security_issue=true" >> $GITHUB_ENV
+          else
+            echo "No security vulnerabilities found."
+            echo "create_security_issue=false" >> $GITHUB_ENV
+          fi
+
+      - name: 🚨 Create Security Issue
+        if: env.create_security_issue == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const auditResults = fs.readFileSync('audit-results.txt', 'utf8');
+
+            const issueBody = `## 🚨 Security Vulnerabilities Detected
+
+            The automated security audit has detected vulnerabilities in our dependencies.
+
+            ### Audit Results
+            \`\`\`
+            ${auditResults}
+            \`\`\`
+
+            ### Action Required
+            Please review these vulnerabilities and update the affected packages.
+
+            ### Steps to Fix
+            1. Run \`pnpm audit\` locally to see detailed information
+            2. Update vulnerable packages with \`pnpm update\`
+            3. If automatic updates don't fix the issues, consider:
+               - Finding alternative packages
+               - Updating to major versions
+               - Adding overrides in package.json (temporary solution)
+
+            This issue was automatically created by the dependency update workflow.`;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚨 Security vulnerabilities detected in dependencies',
+              body: issueBody,
+              labels: ['security', 'dependencies', 'high-priority']
+            });

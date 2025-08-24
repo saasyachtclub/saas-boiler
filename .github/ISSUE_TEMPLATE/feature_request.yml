@@ -1,0 +1,91 @@
+name: ✨ Feature Request
+description: Suggest an idea for SaaS Yacht Club
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+                Thanks for taking the time to suggest a new feature! ⚓
+
+        SaaS Yacht Club is a FREE and open source project - your ideas help shape the future!
+
+        Please search existing issues before creating a new one to avoid duplicates.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Prerequisites
+      description: Please confirm the following
+      options:
+        - label: I have searched existing issues to avoid duplicates
+          required: true
+        - label: I have read the documentation
+          required: true
+        - label: This feature would benefit the SaaS Yacht Club community
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Is your feature request related to a problem? 🤔
+      description: A clear and concise description of what the problem is.
+      placeholder: "I'm always frustrated when..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Describe the solution you'd like 💡
+      description: A clear and concise description of what you want to happen.
+      placeholder: "I would like to see..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Describe alternatives you've considered 🔄
+      description: A clear and concise description of any alternative solutions or features you've considered.
+      placeholder: "I have considered..."
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority 🎯
+      description: How important is this feature to you?
+      options:
+        - Low - Nice to have
+        - Medium - Would improve my workflow
+        - High - Critical for my use case
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Estimated Complexity 🧩
+      description: How complex do you think this feature would be to implement?
+      options:
+        - Simple - Small change or addition
+        - Medium - Moderate development effort
+        - Complex - Significant development effort
+        - Not sure
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context 📝
+      description: Add any other context, mockups, or screenshots about the feature request here.
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution 🤝
+      description: Would you be willing to contribute to this feature?
+      options:
+        - label: I would be willing to implement this feature
+        - label: I would be willing to help test this feature
+        - label: I would be willing to help document this feature

@@ -1,10 +1,14 @@
-import { db } from '@/lib/db'
-import { users } from '@/lib/db/schema'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   Table,
   TableBody,
@@ -13,12 +17,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+import { db } from '@/lib/db'
+import { users } from '@/lib/db/schema'
 import { MoreHorizontal, Search, UserPlus } from 'lucide-react'
 
 export default async function AdminUsersPage() {
@@ -29,9 +29,7 @@ export default async function AdminUsersPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Users</h1>
-          <p className="text-muted-foreground">
-            Manage user accounts and permissions
-          </p>
+          <p className="text-muted-foreground">Manage user accounts and permissions</p>
         </div>
         <Button>
           <UserPlus className="mr-2 h-4 w-4" />
@@ -47,10 +45,7 @@ export default async function AdminUsersPage() {
             <div className="flex items-center space-x-2">
               <div className="relative">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="Search users..."
-                  className="pl-8 w-64"
-                />
+                <Input placeholder="Search users..." className="pl-8 w-64" />
               </div>
             </div>
           </div>
@@ -72,7 +67,7 @@ export default async function AdminUsersPage() {
                   <TableCell>
                     <div className="flex items-center space-x-3">
                       <Avatar className="h-8 w-8">
-                        <AvatarImage src={user.image} alt={user.name || 'User'} />
+                        <AvatarImage src={user.image || undefined} alt={user.name || 'User'} />
                         <AvatarFallback>
                           {user.name?.[0] || user.email[0].toUpperCase()}
                         </AvatarFallback>
@@ -89,8 +84,8 @@ export default async function AdminUsersPage() {
                         user.role === 'super_admin'
                           ? 'default'
                           : user.role === 'admin'
-                          ? 'secondary'
-                          : 'outline'
+                            ? 'secondary'
+                            : 'outline'
                       }
                     >
                       {user.role}

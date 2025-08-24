@@ -1,110 +1,281 @@
-# Dependencies
-node_modules
+# 🚫 SaaS Yacht Club - Comprehensive .gitignore
+
+# ================================
+# 🔒 SECURITY & SECRETS
+# ================================
+.env*
+!.env.example
+!.env.local.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+.secrets
+
+# ================================
+# 📦 DEPENDENCIES
+# ================================
+node_modules/
 .pnp
 .pnp.js
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnpm-debug.log*
+.pnpm-store/
 
-# Testing
-coverage
-
-# Next.js
+# ================================
+# 🏗️ BUILD OUTPUTS
+# ================================
 .next/
 out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
 
-# Production
-build
-dist
+# ================================
+# 🧪 TESTING
+# ================================
+coverage/
+.nyc_output
+test-results/
+playwright-report/
+playwright/.cache/
+.coverage
+*.lcov
 
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Debug
+# ================================
+# 📊 LOGS & DEBUGGING
+# ================================
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 .pnpm-debug.log*
+logs/
+*.log.*
 
-# Local development
-.vscode/
+# ================================
+# 🔧 DEVELOPMENT TOOLS
+# ================================
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
 .idea/
 *.swp
 *.swo
 *~
 
-# OS generated files
+# ================================
+# 💻 OPERATING SYSTEMS
+# ================================
+# macOS
 .DS_Store
-.DS_Store?
+.AppleDouble
+.LSOverride
+Icon
 ._*
+.DocumentRevisions-V100
+.fseventsd
 .Spotlight-V100
+.TemporaryItems
 .Trashes
-ehthumbs.db
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
 Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
 
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ================================
+# 🚀 DEPLOYMENT & CLOUD
+# ================================
+.vercel
+.netlify
+.firebase/
+.gcloud/
+.aws/
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# ================================
+# 📱 MOBILE
+# ================================
+# React Native
+.expo/
+.expo-shared/
+
+# ================================
+# 🎨 ASSETS & MEDIA
+# ================================
+*.tiff
+*.ico
+*.icns
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.7z
+*.dmg
+*.hqx
+*.bin
+*.exe
+*.dll
+*.deb
+*.dmg
+*.iso
+*.img
+*.msi
+*.msp
+*.msm
+
+# ================================
+# 🔄 CACHE & TEMPORARY
+# ================================
+.cache/
+.parcel-cache/
+.turbo/
+.swc/
+.tsc/
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# ================================
+# 📊 ANALYTICS & MONITORING
+# ================================
+.sentry-debug-files
+.sentryclirc
+
+# ================================
+# 🧰 TOOLS & UTILITIES
+# ================================
+.eslintcache
+.stylelintcache
+.prettiercache
+.biome-cache/
+
+# ================================
+# 📚 DOCUMENTATION
+# ================================
+.docusaurus/
+.vuepress/dist
+.vuepress/.temp
+.vuepress/.cache
+
+# ================================
+# 🎯 PROJECT SPECIFIC
+# ================================
 # Database
-drizzle/migrations
 *.db
+*.sqlite
+*.sqlite3
 
-# Logs
-logs
-*.log
+# Uploads
+uploads/
+public/uploads/
 
-# Runtime data
-pids
+# Generated files
+generated/
+auto-generated/
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# ================================
+# 🔍 SEARCH & INDEX
+# ================================
+.searchindex
+
+# ================================
+# 🎮 GAME ENGINES
+# ================================
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# ================================
+# 📝 EDITORS
+# ================================
+# Vim
+*.swp
+*.swo
+*~
+.vimrc.local
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# ================================
+# 🔧 CONFIGURATION
+# ================================
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ================================
+# 🎪 MISC
+# ================================
 *.pid
 *.seed
 *.pid.lock
-
-# Coverage directory used by tools like istanbul
-lib-cov
-
-# nyc test coverage
-.nyc_output
-
-# Dependency directories
-jspm_packages/
-
-# Optional npm cache directory
-.npm
-
-# Optional REPL history
+.grunt
+bower_components
+.lock-wscript
+.wafpickle-*
 .node_repl_history
-
-# Output of 'npm pack'
 *.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variables file
-.env
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
-
-# next.js build output
-.next
-
-# nuxt.js build output
-.nuxt
-
-# vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# TernJS port file
-.tern-port
-
-# Vercel
-.vercel
+.npm
+.eslintrc.local
+.yarnrc.local
+.npmrc.local

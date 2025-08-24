@@ -1,0 +1,78 @@
+name: ❓ Question
+description: Ask a question about SaaS Yacht Club
+title: "[Question]: "
+labels: ["question", "triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+                Thanks for your question! ⚓
+
+        SaaS Yacht Club is a FREE and open source project - we're here to help!
+
+        Before asking, please:
+        - Check the [documentation](https://docs.saasyachtclub.com)
+        - Search existing issues and discussions
+        - Join our [Discord community](https://discord.gg/saasyachtclub) for quick help
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Prerequisites
+      description: Please confirm the following
+      options:
+        - label: I have searched existing issues and discussions
+          required: true
+        - label: I have checked the documentation
+          required: true
+        - label: This is not a bug report (use the bug template instead)
+          required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: What's your question? 🤔
+      description: Please be as specific as possible
+      placeholder: "I'm trying to understand how to..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context 📋
+      description: What are you trying to achieve? What have you tried so far?
+      placeholder: "I'm building a feature that..."
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Relevant code (if applicable) 💻
+      description: Please share any relevant code snippets
+      render: typescript
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area of Interest 🎯
+      description: Which area does your question relate to?
+      options:
+        - Authentication & Authorization
+        - Payments & Stripe Integration
+        - Database & Drizzle ORM
+        - UI & Components
+        - Deployment & DevOps
+        - API Development
+        - Testing
+        - Performance
+        - Security
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context 📝
+      description: Add any other context that might help us answer your question

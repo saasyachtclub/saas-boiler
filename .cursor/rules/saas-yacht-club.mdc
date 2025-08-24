@@ -1,0 +1,293 @@
+# ⚓ SaaS Yacht Club - Modern Development Rules & Guidelines
+
+## 🎯 Project Overview
+This is the ultimate FREE & Open Source SaaS boilerplate built with cutting-edge technologies: Next.js 15, React 19, Better Auth, Stripe, Neon PostgreSQL, and Drizzle ORM. It follows modern App Router patterns and includes everything needed to build and deploy production-ready SaaS applications.
+
+## 🏗️ Modern Architecture Stack
+- **Frontend**: Next.js 15 with App Router + React 19 + TypeScript 5.7
+- **Authentication**: Better Auth 1.3+ with social login & magic links
+- **Database**: Drizzle ORM + Neon PostgreSQL (serverless)
+- **Payments**: Stripe integration with subscription management
+- **Styling**: Tailwind CSS + shadcn/ui + Lucide React icons
+- **Code Quality**: Biome (ESLint + Prettier replacement)
+- **Testing**: Vitest + Playwright + React Testing Library
+- **Deployment**: Vercel with Edge Runtime
+- **Monitoring**: Sentry + PostHog + Axiom logging
+- **AI Integration**: Cursor IDE optimized development
+
+## 📁 File Structure & Glob Patterns
+
+### Core Application Files
+```
+apps/web/src/
+├── app/**/*.{tsx,ts}              # Next.js App Router pages & layouts
+├── components/**/*.{tsx,ts}       # Reusable React components
+├── lib/**/*.{ts,tsx}             # Utility libraries & configurations
+├── hooks/**/*.{ts,tsx}           # Custom React hooks
+├── types/**/*.ts                 # TypeScript type definitions
+├── styles/**/*.{css,scss}        # Global styles & CSS modules
+└── __tests__/**/*.{test,spec}.{ts,tsx}  # Test files
+```
+
+### Configuration Files
+```
+**/*.config.{js,ts,mjs,cjs}       # All configuration files
+**/*.{json,yaml,yml}              # Data & config files
+**/tsconfig*.json                 # TypeScript configurations
+**/package.json                   # Package manifests
+**/.env*                          # Environment files (gitignored)
+!**/.env.example                  # Environment templates (tracked)
+```
+
+### Build & Generated Files (Excluded)
+```
+**/.next/**                       # Next.js build output
+**/node_modules/**               # Dependencies
+**/dist/**                       # Build distributions
+**/build/**                      # Build artifacts
+**/.turbo/**                     # Turbo cache
+**/coverage/**                   # Test coverage reports
+**/*.log                         # Log files
+**/.DS_Store                     # macOS system files
+**/Thumbs.db                     # Windows system files
+```
+
+## 🎨 Code Style Guidelines
+
+### TypeScript Best Practices
+- Use strict TypeScript configuration with `"strict": true`
+- Define proper interfaces for all data structures
+- Use generics for reusable components and functions
+- Implement proper error types with custom error classes
+- Export types from dedicated type files in `types/` directory
+- Use `interface` over `type` for object definitions
+- Implement proper null/undefined handling with optional chaining
+
+### React Components (Modern Patterns)
+- Use Server Components by default (no 'use client' unless needed)
+- Implement proper TypeScript interfaces for all props
+- Use custom hooks for shared logic and state management
+- Follow component composition patterns over inheritance
+- Implement proper loading and error states for all async operations
+- Use React.Suspense for data fetching boundaries
+- Implement proper accessibility with ARIA attributes
+
+### Database Operations (Drizzle ORM)
+- Define all schemas in dedicated files under `lib/db/schema/`
+- Use relations for complex queries and joins
+- Implement proper error handling with try-catch blocks
+- Use database transactions for complex operations
+- Implement proper connection pooling and cleanup
+- Use prepared statements for repeated queries
+- Add proper indexes for performance optimization
+
+## 🔐 Authentication & Security
+
+### Better Auth Configuration
+- Enable email verification for all new accounts
+- Implement proper password policies (min 8 chars, complexity)
+- Use secure session management with proper expiration
+- Enable rate limiting on authentication endpoints
+- Implement proper CSRF protection
+- Use secure cookie settings in production
+- Add proper logout functionality with session cleanup
+
+### Route Protection Patterns
+- Protect routes at the server level using middleware
+- Implement role-based access control (RBAC)
+- Use proper redirect patterns for unauthorized access
+- Add loading states during authentication checks
+- Implement proper error handling for auth failures
+- Use session validation on all protected API routes
+
+## 💳 Stripe Integration Patterns
+
+### Subscription Management
+- Use Stripe Customer Portal for self-service management
+- Implement proper webhook handling for subscription events
+- Add proper error handling for payment failures
+- Use idempotency keys for payment operations
+- Implement proper subscription status tracking
+- Add proper invoice and payment history
+- Use Stripe Test Clock for testing subscription scenarios
+
+## 🎨 Styling & UI Guidelines
+
+### Tailwind CSS Best Practices
+- Use CSS custom properties for theming
+- Implement proper dark mode support with CSS variables
+- Use consistent spacing scale (4px base unit)
+- Implement responsive design with mobile-first approach
+- Use semantic color names (primary, secondary, accent)
+- Avoid arbitrary values, use design tokens
+- Implement proper focus states for accessibility
+
+### Component Patterns
+- Use shadcn/ui as the base component library
+- Implement proper component variants with class-variance-authority
+- Use compound components for complex UI patterns
+- Implement proper loading and error states
+- Add proper animations with Tailwind CSS animate
+- Use proper semantic HTML elements
+- Implement proper form validation with visual feedback
+
+## 🧪 Testing Strategies
+
+### Test File Patterns
+```
+**/__tests__/**/*.{test,spec}.{ts,tsx}    # Test files
+**/*.{test,spec}.{ts,tsx}                 # Co-located tests
+**/e2e/**/*.{test,spec}.ts                # E2E tests
+**/playwright/**/*.{test,spec}.ts         # Playwright tests
+```
+
+### Testing Best Practices
+- Write tests for all critical business logic
+- Use React Testing Library for component tests
+- Implement proper test setup and teardown
+- Use MSW (Mock Service Worker) for API mocking
+- Add visual regression tests for UI components
+- Test error states and edge cases
+- Use proper test data factories for consistent test data
+
+## 🚀 Performance Optimization
+
+### Code Splitting & Lazy Loading
+- Use dynamic imports for heavy components
+- Implement proper loading states for lazy components
+- Use React.lazy() for client-side code splitting
+- Implement proper bundle analysis and monitoring
+- Use proper image optimization with Next.js Image
+- Implement proper caching strategies
+- Use proper CDN configuration for static assets
+
+### Database Performance
+- Use proper database indexes for query optimization
+- Implement connection pooling for database connections
+- Use proper query optimization techniques
+- Implement proper caching for frequently accessed data
+- Use database migrations for schema changes
+- Monitor database performance and slow queries
+- Implement proper database backup and recovery
+
+## 🔒 Security Best Practices
+
+### Input Validation
+- Use Zod for all input validation and sanitization
+- Implement proper CORS configuration
+- Use Content Security Policy (CSP) headers
+- Implement proper rate limiting on all API endpoints
+- Use HTTPS in production with proper SSL configuration
+- Implement proper session management and security
+- Add proper logging and monitoring for security events
+
+### Data Protection
+- Never store sensitive data in localStorage or sessionStorage
+- Use proper encryption for sensitive data at rest
+- Implement proper data retention and deletion policies
+- Use environment variables for all secrets and API keys
+- Implement proper access controls and permissions
+- Add proper audit logging for sensitive operations
+- Use proper backup encryption and security
+
+## 🌐 API Design Patterns
+
+### RESTful API Structure
+- Follow RESTful conventions for all API endpoints
+- Use proper HTTP status codes for all responses
+- Implement proper error handling with consistent error format
+- Use proper request/response validation with Zod
+- Implement proper pagination for list endpoints
+- Add proper API documentation with OpenAPI/Swagger
+- Use proper versioning strategy for API changes
+
+### Error Handling
+- Implement consistent error response format
+- Use proper HTTP status codes for different error types
+- Add proper error logging and monitoring
+- Implement proper error boundaries in React components
+- Use proper error messages that are user-friendly
+- Add proper retry logic for transient errors
+- Implement proper circuit breaker patterns for external APIs
+
+## 📊 Monitoring & Analytics
+
+### Error Tracking
+- Use Sentry for error tracking and performance monitoring
+- Implement proper error boundaries and error handling
+- Add proper logging for all critical operations
+- Use proper alerting for critical errors and issues
+- Implement proper performance monitoring and optimization
+- Add proper user session recording for debugging
+- Use proper A/B testing for feature rollouts
+
+### Analytics Integration
+- Use PostHog for product analytics and user behavior tracking
+- Implement proper event tracking for user actions
+- Add proper conversion funnel tracking
+- Use proper cohort analysis for user retention
+- Implement proper feature flag management
+- Add proper custom dashboards for business metrics
+- Use proper data export and analysis capabilities
+
+## 🔄 CI/CD Pipeline Patterns
+
+### GitHub Actions Workflows
+- Implement proper automated testing in CI pipeline
+- Use proper caching for dependencies and build artifacts
+- Implement proper security scanning and vulnerability checks
+- Add proper code quality checks and linting
+- Use proper deployment strategies with rollback capabilities
+- Implement proper environment-specific deployments
+- Add proper monitoring and alerting for deployment failures
+
+### Deployment Best Practices
+- Use proper environment variable management
+- Implement proper database migration strategies
+- Use proper blue-green deployment for zero downtime
+- Add proper health checks and monitoring
+- Implement proper backup and recovery procedures
+- Use proper SSL/TLS configuration and security headers
+- Add proper CDN configuration for global performance
+
+## 📝 Documentation Standards
+
+### Code Documentation
+- Add proper JSDoc comments for all public functions and classes
+- Document all API endpoints with proper examples
+- Add proper README files for all major components
+- Use proper inline comments for complex business logic
+- Implement proper architecture documentation
+- Add proper troubleshooting guides and FAQs
+- Use proper changelog management for version tracking
+
+### Component Documentation
+- Document all component props and their types
+- Add proper usage examples for all components
+- Document all component variants and states
+- Add proper accessibility documentation
+- Use proper Storybook for component documentation
+- Add proper design system documentation
+- Document all custom hooks and their usage
+
+## 🎯 File Naming Conventions
+
+### Component Files
+- Use PascalCase for React component files (UserProfile.tsx)
+- Use lowercase for utility and configuration files (utils.ts)
+- Use kebab-case for page files in app router (user-profile/page.tsx)
+- Use proper file extensions (.tsx for React, .ts for utilities)
+- Group related files in feature-based directories
+- Use index files for clean imports and exports
+- Add proper file organization with barrel exports
+
+### Directory Structure
+- Use feature-based directory structure for scalability
+- Group related components, hooks, and utilities together
+- Use proper separation of concerns between layers
+- Implement proper module boundaries and dependencies
+- Use consistent naming across all directories
+- Add proper README files for complex directory structures
+- Use proper import/export patterns for clean architecture
+
+This comprehensive rule set ensures modern, scalable, and maintainable SaaS development with the latest best practices and tools.

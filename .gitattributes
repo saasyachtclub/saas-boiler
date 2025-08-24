@@ -1,0 +1,111 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Source code
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Web files
+*.html text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.sass text eol=lf
+
+# Config files
+*.config.js text eol=lf
+*.config.ts text eol=lf
+*.config.json text eol=lf
+.env* text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# Documentation
+*.txt text eol=lf
+*.md text eol=lf
+LICENSE text eol=lf
+README* text eol=lf
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text eol=lf
+
+# Fonts
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+
+# Archives
+*.zip binary
+*.tar binary
+*.gz binary
+
+# Executables
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+
+# Package files
+*.tgz binary
+*.tar.gz binary
+
+# Lock files (should not be modified)
+package-lock.json binary
+yarn.lock binary
+pnpm-lock.yaml binary
+
+# Generated files
+*.map binary
+*.min.js binary
+*.min.css binary
+
+# Database files
+*.db binary
+*.sqlite binary
+*.sqlite3 binary
+
+# Logs
+*.log text eol=lf
+
+# Environment files
+.env text eol=lf
+.env.* text eol=lf
+
+# GitHub specific
+.github/**/* text eol=lf
+
+# Linguist overrides for better language detection
+*.md linguist-detectable=true
+*.json linguist-detectable=true
+docs/** linguist-documentation=true
+scripts/** linguist-vendored=false
+tooling/** linguist-vendored=false
+
+# Mark vendor directories
+node_modules/** linguist-vendored=true
+.next/** linguist-generated=true
+dist/** linguist-generated=true
+build/** linguist-generated=true
+coverage/** linguist-generated=true
+
+# Export ignore (files not included in git archive)
+.github/ export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
+*.test.* export-ignore
+*.spec.* export-ignore
+__tests__/ export-ignore
+coverage/ export-ignore
+.nyc_output/ export-ignore

@@ -1,10 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { stripe, stripeWebhookSecret } from '@/lib/stripe'
 import { db } from '@/lib/db'
-import { subscriptions, products } from '@/lib/db/schema'
+import { products, subscriptions } from '@/lib/db/schema'
+import { captureError, log, withAxiom } from '@/lib/logging'
+import { stripe, stripeWebhookSecret } from '@/lib/stripe'
 import { eq } from 'drizzle-orm'
+import { NextResponse, type NextRequest } from 'next/server'
 
-export async function POST(req: NextRequest) {
+export const POST = withAxiom(async function POST(req: NextRequest) {
   const body = await req.text()
   const signature = req.headers.get('stripe-signature')
 
@@ -17,7 +18,7 @@ export async function POST(req: NextRequest) {
   try {
     event = stripe.webhooks.constructEvent(body, signature, stripeWebhookSecret)
   } catch (err) {
-    console.error('Webhook signature verification failed:', err)
+    captureError(err, { scope: 'stripe.webhook', stage: 'verify' })
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
   }
 
@@ -39,15 +40,15 @@ export async function POST(req: NextRequest) {
         await handleSubscriptionDeleted(event.data.object)
         break
       default:
-        console.log(`Unhandled event type: ${event.type}`)
+        log('info', 'Unhandled Stripe event', { type: event.type })
     }
 
     return NextResponse.json({ received: true })
   } catch (error) {
-    console.error('Error processing webhook:', error)
+    captureError(error, { scope: 'stripe.webhook', stage: 'handle', eventType: event?.type })
     return NextResponse.json({ error: 'Webhook processing failed' }, { status: 500 })
   }
-}
+})
 
 async function handleCheckoutCompleted(session: any) {
   const customerId = session.customer
@@ -58,6 +59,9 @@ async function handleCheckoutCompleted(session: any) {
   }
 
   const lineItems = await stripe.checkout.sessions.listLineItems(session.id)
+  if (!lineItems.data[0] || !lineItems.data[0].price) {
+    throw new Error('Line item or price not found')
+  }
   const priceId = lineItems.data[0].price.id
 
   const product = await db.query.products.findFirst({

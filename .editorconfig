@@ -1,0 +1,173 @@
+# 🎨 SaaS Yacht Club - Editor Configuration
+# 
+# EditorConfig helps maintain consistent coding styles for multiple developers
+# working on the same project across various editors and IDEs.
+# 
+# Learn more: https://editorconfig.org
+
+# ================================
+# 🌐 ROOT CONFIGURATION
+# ================================
+root = true
+
+# ================================
+# 📝 ALL FILES
+# ================================
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# ================================
+# 🔧 JAVASCRIPT & TYPESCRIPT
+# ================================
+[*.{js,jsx,ts,tsx,mjs,cjs}]
+indent_style = space
+indent_size = 2
+max_line_length = 100
+
+# ================================
+# 📄 JSON FILES
+# ================================
+[*.json]
+indent_style = space
+indent_size = 2
+
+# ================================
+# 📋 YAML FILES
+# ================================
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# ================================
+# 🎨 CSS & STYLING
+# ================================
+[*.{css,scss,sass,less}]
+indent_style = space
+indent_size = 2
+
+# ================================
+# 📚 MARKDOWN
+# ================================
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = 120
+
+# ================================
+# 🐍 PYTHON (if used)
+# ================================
+[*.py]
+indent_style = space
+indent_size = 4
+max_line_length = 88
+
+# ================================
+# 🐚 SHELL SCRIPTS
+# ================================
+[*.{sh,bash,zsh}]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+
+# ================================
+# 📦 PACKAGE FILES
+# ================================
+[package.json]
+indent_style = space
+indent_size = 2
+
+[pnpm-lock.yaml]
+indent_style = space
+indent_size = 2
+insert_final_newline = false
+
+# ================================
+# 🔧 CONFIG FILES
+# ================================
+[*.config.{js,ts,mjs,cjs}]
+indent_style = space
+indent_size = 2
+
+[tsconfig*.json]
+indent_style = space
+indent_size = 2
+
+[.{eslint,prettier,biome}*]
+indent_style = space
+indent_size = 2
+
+# ================================
+# 🌐 WEB FILES
+# ================================
+[*.{html,htm}]
+indent_style = space
+indent_size = 2
+
+[*.{xml,svg}]
+indent_style = space
+indent_size = 2
+
+# ================================
+# �� DATA FILES
+# ================================
+[*.{csv,tsv}]
+trim_trailing_whitespace = false
+
+# ================================
+# 🔒 ENVIRONMENT FILES
+# ================================
+[.env*]
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# ================================
+# 📋 MAKEFILE
+# ================================
+[{Makefile,makefile}]
+indent_style = tab
+indent_size = 4
+
+# ================================
+# 🐳 DOCKER
+# ================================
+[{Dockerfile,Dockerfile.*}]
+indent_style = space
+indent_size = 2
+
+[docker-compose*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# ================================
+# 🚀 DEPLOYMENT
+# ================================
+[vercel.json]
+indent_style = space
+indent_size = 2
+
+[netlify.toml]
+indent_style = space
+indent_size = 2
+
+# ================================
+# 🧪 TEST FILES
+# ================================
+[*.{test,spec}.{js,ts,jsx,tsx}]
+indent_style = space
+indent_size = 2
+max_line_length = 120
+
+# ================================
+# 📚 DOCUMENTATION
+# ================================
+[*.{md,mdx}]
+trim_trailing_whitespace = false
+max_line_length = 120
+
+[docs/**/*.md]
+trim_trailing_whitespace = false
+max_line_length = 100

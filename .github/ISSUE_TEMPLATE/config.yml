@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentation
+    url: https://docs.saasyachtclub.com
+    about: Check our comprehensive documentation for guides and API references
+  - name: 💬 Discord Community
+    url: https://discord.gg/saasyachtclub
+    about: Join our Discord server for real-time help and community discussions
+  - name: 🐦 Twitter/X
+    url: https://twitter.com/saasyachtclub
+    about: Follow us for updates and announcements
+  - name: 📧 Email Support
+    url: mailto:support@saasyachtclub.com
+    about: Contact us directly for business inquiries or private support

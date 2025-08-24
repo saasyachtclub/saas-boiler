@@ -1,0 +1,9 @@
+# Cursor Rules for SaaS Yacht Club
+
+- Prefer pnpm >= 9 and Node >= 20.
+- When installing, resolve semver conflicts by preferring app versions.
+- Always run `pnpm -w build` before pushing.
+- Validate env: DATABASE_URL, STRIPE_SECRET_KEY, BETTER_AUTH_SECRET, RESEND_API_KEY, SENTRY_DSN, AXIOM_TOKEN.
+- Use `next-axiom` `withAxiom` on API routes and middleware.
+- Capture errors via `src/lib/logging.ts` `captureError`.
+- Do not commit .env or secrets.
